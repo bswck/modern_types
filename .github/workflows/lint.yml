@@ -1,0 +1,22 @@
+# This file was generated from bswck/skeleton@e4343ae.
+# Instead of changing this particular file, you might want to alter the template:
+# https://github.com/bswck/skeleton/tree/e4343ae/project/.github/workflows/lint.yml.jinja
+
+name: "Lint"
+
+on: ["push"]
+
+jobs:
+  lint:
+    runs-on: "ubuntu-latest"
+    steps:
+    - uses: "actions/checkout@v4"
+    - name: "Set up Python 3.8"
+      uses: "actions/setup-python@v4"
+      with:
+        python-version: "3.8"
+    - name: "Install Ruff"
+      run: |
+        pipx install ruff
+    - name: "Analyze the code with Ruff"
+      run: "ruff ."

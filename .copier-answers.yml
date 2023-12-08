@@ -1,0 +1,20 @@
+_commit: e4343ae
+_src_path: gh:bswck/skeleton
+author_username: bswck
+docs: true
+docs_slug: modern-types
+email_address: bswck.dev@gmail.com
+github_username: bswck
+license_name: MIT
+org_full_name: Bartosz Sławecki
+package_name: __modern_types__
+project_description: PEP 585 + PEP 604 backports, because it started becoming annoying.
+publish_on_pypi: true
+pypi_project_description: PEP 585 + PEP 604 backports, because it started becoming
+    annoying.
+pypi_project_name: modern-types
+python_version: '3.8'
+repo_name: modern_types
+test_suite: true
+use_precommit: true
+visibility: public
