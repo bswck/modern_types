@@ -13,7 +13,7 @@ import sys
 import typing
 from typing import _GenericAlias  # type: ignore[attr-defined]
 
-from __modern_types__._patch import patch
+from __modern_types__._patch import PATCH_STACK_OFFSET, patch
 
 __all__ = (
     "patch",
@@ -81,14 +81,20 @@ if _PYTHON_VERSION < (3, 10):
 
     # We are very kind and we will fixup `get_type_hints` for all modules that import us.
     # To overcome this, make a reference that wraps `get_type_hints` in some other object.
-    for frame_info in inspect.stack():
+    for offset, frame_info in inspect.stack():
         if __name__ in "".join(frame_info.code_context or ()):
+            stack_offset = offset
             importer = sys.modules[frame_info.frame.f_globals["__name__"]]
             for key, val in vars(importer).items():
                 if val is _typing_get_type_hints:
                     setattr(importer, key, _wrap_get_type_hints)
                 if _PYTHON_VERSION == (3, 8) and val is _collections_defaultdict:
                     setattr(importer, key, typing.DefaultDict)
+
+    PATCH_STACK_OFFSET.set(stack_offset)
+
+    # Automatically patch other modules
+    import __modern_types__.ext  # noqa: F401
 else:
     import warnings
 
