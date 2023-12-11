@@ -39,6 +39,7 @@ if _PYTHON_VERSION < (3, 10):
             return typing.Union[self, other]  # pragma: no cover; coverage bug?
 
     _GenericAlias.__bases__ += (AliasBase,)
+    _GenericAlias.__subclasscheck__ = AliasBase.__subclasscheck__
 
     for _g in (
         typing.Tuple,
