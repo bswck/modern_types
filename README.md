@@ -88,7 +88,8 @@ And now you can use modern types everywhere in your code and the following repla
 |             `X \| Y`              |     `typing.Union[X, Y]`     |                       **>=3.10**                       |                        >=3.8                        | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
-> Some optional replacements will also be registered if possible, according to those listed in the [`__modern_types__._typeshed`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_typeshed.py) source code.
+> Some optional replacements will also be registered if possible,
+> according to those listed in the [`__modern_types__._typeshed`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_typeshed.py) source code.
 
 ## ProTip: How to subclass built-in generic classes in Python 3.8?
 Supposing you are subclassing `dict`, you could write
