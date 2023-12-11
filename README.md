@@ -69,8 +69,8 @@ Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`
 Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
 
 # Can `__modern_types__` be used in production?
-Yes, it won't break anything. The hack simply overrides the default global namespace of `typing.get_type_hints`,
-but if some keys that `__modern_types__` would supply are present, they are used instead.
+Yes. It won't break the existing code despite the monkeypatch. The library simply overrides the default global namespace of `typing.get_type_hints` and tries to re-assign name-to-object references of un-subscriptable and un-orable types in relevant modules.
+If some keys that `__modern_types__` would supply to `typing.get_type_hints` global namespace are present, they are used instead of the `__modern_types__` ones.
 
 # Installation
 If you want to…
