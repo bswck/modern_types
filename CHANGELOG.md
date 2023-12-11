@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v1.0.8](https://github.com/bswck/modern_types/tree/v1.0.8) (2023-12-11)
+
+
+### Fixed
+
+- `recursive_guard` was added in 3.9.
+
+
 ## [v1.0.7](https://github.com/bswck/modern_types/tree/v1.0.7) (2023-12-11)
 
 
