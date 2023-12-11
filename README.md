@@ -49,7 +49,7 @@ Keep your codebase up-to-date by speeding up migration to modern types, even if 
 
 Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
 
-Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
+Importing `__modern_types__` will make all `typing._eval_type`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
 
 # How to use?
 > [!Warning]
@@ -62,7 +62,7 @@ Importing `__modern_types__` will make all `typing.get_type_hints`-dependent par
 > You should remember putting `from __future__ import annotations` at the top of your modules everywhere you
 > want to leverage `__modern_types__`.
 
-Simply import `__modern_types__` in your code, and it will override the default global namespace of `typing.get_type_hints`.
+Simply import `__modern_types__` in your code, and it will override the default global namespace of `typing._eval_type`.
 
 And now you can use modern types everywhere in your code and the following replacements will be applied without overwriting your parameters:
 
