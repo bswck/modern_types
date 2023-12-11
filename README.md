@@ -12,8 +12,8 @@
 Hence, the targeted Python versions are 3.8 and 3.9.
 
 # What does it do?
-Technically speaking, `__modern_types__` traverses ASTs of the type hint expressions to transform copies
-of namespaces passed to the evaluation routine.
+Technically speaking, `__modern_types__` traverses ASTs of type hint expressions to transform copies
+of the namespaces passed to the evaluation routine.
 The transformation prevents type errors in Python 3.8 and 3.9 when evaluating these type hints using future-version PEP 585 and PEP 604 syntaxes.
 This might be very useful for [writing pydantic models](https://docs.pydantic.dev/2.5/concepts/models/) in Python <=3.10 in a modern fashion, without having to import `typing`.
 
