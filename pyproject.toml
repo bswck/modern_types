@@ -13,7 +13,6 @@ packages = [{ include = "__modern_types__/" }]
 homepage = "https://github.com/bswck/modern_types"
 
 [tool.poetry.urls]
-Documentation = "https://modern-types.readthedocs.io/en/latest/"
 Issues = "https://github.com/bswck/modern_types/issues"
 Distribution = "https://pypi.org/project/modern-types/"
 Coverage = "https://coverage-badge.samuelcolvin.workers.dev/redirect/bswck/modern_types"
@@ -33,13 +32,6 @@ coverage = "^7.3.2"
 poethepoet = "^0.24.3"
 pre-commit = "^3.5.0"
 smokeshow = "^0.4.0"
-[tool.poetry.group.docs]
-optional = true
-
-[tool.poetry.group.docs.dependencies]
-markdown-exec = ">=1.3.0"
-mkdocs-material = ">=8.2,<10.0.0"
-mkdocstrings = { version = ">=0.19.0", extras = ["python"] }
 
 [tool.poe.tasks]
 generate = "scripts/generate_auto.py"
