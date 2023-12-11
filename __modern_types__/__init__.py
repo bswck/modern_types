@@ -7,6 +7,7 @@ PEP 585 + PEP 604 backports, because it started becoming annoying.
 """
 from __future__ import annotations
 
+import collections
 import inspect
 import sys
 import typing
@@ -54,6 +55,8 @@ def _wrap_get_type_hints(
     return _typing_get_type_hints(obj, {**ns, **(globalns or {})}, localns)
 
 
+_collections_defaultdict = collections.defaultdict
+collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
 typing.get_type_hints = typing.cast(typing.Any, _wrap_get_type_hints)
 
 # We are very kind and we will fixup `get_type_hints` for all modules that import us.
@@ -64,3 +67,5 @@ for frame_info in inspect.stack():
         for key, val in vars(importer).items():
             if val is _typing_get_type_hints:
                 setattr(importer, key, _wrap_get_type_hints)
+            if val is _collections_defaultdict:
+                setattr(importer, key, typing.DefaultDict)
