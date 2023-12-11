@@ -12,17 +12,18 @@
 Hence, the targeted Python versions are 3.8 and 3.9.
 
 # What does it do?
-Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
-which might happen in pydantic models for example.
+Traverses AST of the type hints to transform copies of namespaces passed to the evaluation routine
+and prevents type errors in Python 3.8 and 3.9 when evaluating them in the way that future-version PEP 585 and PEP 604 allow.
+This might be very useful for writing pydantic models in Python <=3.10 and use PEP 585 and PEP 604 syntax.
 
-In Python 3.8, the following code
+As a result, in Python 3.8, the following code
 ```py
 from __future__ import annotations
 from collections import defaultdict
 from pprint import pprint
 from typing import get_type_hints
 
-import __modern_types__
+import __modern_types__  # without this line it won't work!
 
 class Foo:
     a: dict[str, int]
@@ -43,6 +44,8 @@ gives:
  "e": typing.FrozenSet[int],
  "f": typing.DefaultDict[str, int]}
 ```
+instead of raising an error that `type` object isn't subscriptable (Python 3.8)
+or that `GenericAlias` doesn't support the `|` operator (Python 3.9).
 
 # Use case
 Keep your codebase up-to-date by speeding up migration to modern types, even if you support Python versions >=3.8.
@@ -50,6 +53,12 @@ Keep your codebase up-to-date by speeding up migration to modern types, even if 
 Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
 
 Importing `__modern_types__` will make all `typing._eval_type`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
+
+# Is `__modern_types__` safe to use in production?
+Yes. It shouldn't break most any existing codebase it only uses AST and overwrites `typing.ForwardRef._evaluate`.
+`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and such.
+
+Only one, safe monkeypatch and huge benefits.
 
 # How to use?
 > [!Warning]
@@ -68,15 +77,15 @@ to use `typing.GenericAlias`s that support `[]` and `|` operators at runtime.
 
 And now you can use modern types everywhere in your code and the following replacements will be applied without overwriting your parameters:
 
-| Old type | New type | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... | Backports PEP |
-|:---:|:---:|:---:|:---:|:---:|
-| `dict[KT, VT]` | `typing.Dict[KT, VT]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `list[T]` | `typing.List[T]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `set[T]` | `typing.Set[T]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `tuple[T, ...]` | `typing.Tuple[T, ...]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `frozenset[T]` | `typing.FrozenSet[T]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `collections.defaultdict[KT, VT]` | `typing.DefaultDict[KT, VT]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `X \| Y` | `typing.Union[X, Y]` | **>=3.10** | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
+|             Old type              |           New type           | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... |                Backports PEP                 |
+| :-------------------------------: | :--------------------------: | :----------------------------------------------------: | :-------------------------------------------------: | :------------------------------------------: |
+|          `dict[KT, VT]`           |    `typing.Dict[KT, VT]`     |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
+|             `list[T]`             |       `typing.List[T]`       |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
+|             `set[T]`              |       `typing.Set[T]`        |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
+|          `tuple[T, ...]`          |    `typing.Tuple[T, ...]`    |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
+|          `frozenset[T]`           |    `typing.FrozenSet[T]`     |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
+| `collections.defaultdict[KT, VT]` | `typing.DefaultDict[KT, VT]` |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
+|             `X \| Y`              |     `typing.Union[X, Y]`     |                       **>=3.10**                       |                        >=3.8                        | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
 > Some optional replacements will also be registered if possible, according to those listed in the [`__modern_types__._auto`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_auto.py) source code.
@@ -115,11 +124,6 @@ class YourDictSubclass(dict):
 so that `YourDictSubclass[str, int]`, for instance, could be used as an evaluable type annotation.
 
 If you want an API that simplifies this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
-
-# Can `__modern_types__` be used in production?
-Yes. It shouldn't break most any existing codebase it only uses AST and overwrites `typing.ForwardRef._evaluate`.
-`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and such.
-Only one safe monkeypatch—huge benefits.
 
 # Installation
 If you want to…
