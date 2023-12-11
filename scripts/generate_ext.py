@@ -14,6 +14,10 @@ from dataclasses import dataclass, field
 from functools import partial
 from itertools import chain
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 PATTERN: re.Pattern[str] = re.compile(
     "class ([A-Z][A-Za-z0-9_]*)\\(.*Generic\\[(.*)\\]\\.*\\):",
@@ -59,7 +63,7 @@ class ModuleInfo:
     path: Path
     root: str
     source_code: str
-    type_vars: set[TypeParam]
+    type_vars: list[TypeVarInfo]
 
 
 @dataclass(frozen=True)
@@ -77,7 +81,7 @@ class Location:
 @dataclass(frozen=True)
 class GenericSignature:
     class_name: str
-    type_parameters: list[TypeParameter]
+    type_parameters: list[str]
     location: Location
 
     @property
@@ -124,8 +128,8 @@ class TypeVarInfo:
     @property
     def assign_stmt(self) -> str:
         orig_expr = self.location.match.group(0)
-        call: ast.Call = ast.parse(orig_expr).body[0].value
-        call.args[0].value = DoubleQuoteName(call.args[0].value)
+        call: ast.Call = ast.parse(orig_expr).body[0].value  # type: ignore[attr-defined]
+        call.args[0].value = DoubleQuoteName(call.args[0].value)  # type: ignore[attr-defined]
         comment = preceding_comment = ""
         for keyword in call.keywords:
             if (
@@ -156,7 +160,9 @@ class TypeVarInfo:
         return (preceding_comment + f"{self.name} = {expr}" + comment).strip()
 
 
-def find_generic_signatures(module_path: Path, *, root: str = "stdlib") -> None:
+def find_generic_signatures(
+    module_path: Path, *, root: str = "stdlib"
+) -> Iterator[GenericSignature]:
     source_code = module_path.read_text()
     module_name = (
         str(module_path)
@@ -165,7 +171,7 @@ def find_generic_signatures(module_path: Path, *, root: str = "stdlib") -> None:
         .replace("/", ".")
         .removeprefix(".")
     )
-    type_vars = []
+    type_vars: list[TypeVarInfo] = []
     module_info = ModuleInfo(
         path=module_path,
         name=module_name,
@@ -194,7 +200,9 @@ def find_generic_signatures(module_path: Path, *, root: str = "stdlib") -> None:
         )
 
 
-def find_generics(path: Path = Path("."), root: str = "stdlib") -> None:
+def find_generics(
+    path: Path = Path("."), root: str = "stdlib"
+) -> Iterator[GenericSignature]:
     if root == "stubs/*":
         root_dir = "stubs"
     else:
@@ -207,10 +215,10 @@ def find_generics(path: Path = Path("."), root: str = "stdlib") -> None:
             )
 
 
-def generate_ext_script(path: Path[str] = Path("__modern_types__/ext.py")) -> None:
-    type_vars = []
+def generate_ext_script(path: Path = Path("__modern_types__/ext.py")) -> None:
+    type_vars: list[TypeVarInfo] = []
 
-    def collect_type_vars(generic: GenericSignature) -> set[TypeVarInfo]:
+    def collect_type_vars(generic: GenericSignature) -> GenericSignature:
         type_vars.extend(
             type_var
             for type_var in generic.location.module_info.type_vars
