@@ -1,6 +1,6 @@
-# This file was generated from bswck/skeleton@ea3be8a.
+# This file was generated from bswck/skeleton@5e91578.
 # Instead of changing this particular file, you might want to alter the template:
-# https://github.com/bswck/skeleton/tree/ea3be8a/project/pyproject.toml.jinja
+# https://github.com/bswck/skeleton/tree/5e91578/project/pyproject.toml.jinja
 
 [tool.poetry]
 name = "modern_types"
@@ -24,9 +24,9 @@ python = ">=3.8,<=3.12"
 [tool.poetry.group.dev.dependencies]
 
 [tool.poetry.group.dev-skeleton.dependencies]
-# This dependency group was generated from bswck/skeleton@ea3be8a.
+# This dependency group was generated from bswck/skeleton@5e91578.
 # Instead of changing this particular file, you might want to alter the template:
-# https://github.com/bswck/skeleton/tree/ea3be8a/project/pyproject.toml.jinja
+# https://github.com/bswck/skeleton/tree/5e91578/project/pyproject.toml.jinja
 mypy = "^1.7.0"
 ruff = "^0.1.2"
 towncrier = "^23.11.0"

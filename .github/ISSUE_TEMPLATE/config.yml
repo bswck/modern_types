@@ -1,5 +1,5 @@
-# This file was generated from bswck/skeleton@ea3be8a.
+# This file was generated from bswck/skeleton@5e91578.
 # Instead of changing this particular file, you might want to alter the template:
-# https://github.com/bswck/skeleton/tree/ea3be8a/project/.github/ISSUE_TEMPLATE/config.yml.jinja
+# https://github.com/bswck/skeleton/tree/5e91578/project/.github/ISSUE_TEMPLATE/config.yml.jinja
 
 blank_issues_enabled: true

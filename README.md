@@ -89,9 +89,9 @@ poetry add modern-types
 ## …contribute to [modern_types](https://github.com/bswck/modern_types) 🚀
 
 <!--
-This section was generated from bswck/skeleton@ea3be8a.
+This section was generated from bswck/skeleton@5e91578.
 Instead of changing this particular file, you might want to alter the template:
-https://github.com/bswck/skeleton/tree/ea3be8a/fragments/guide.md
+https://github.com/bswck/skeleton/tree/5e91578/fragments/guide.md
 -->
 
 > [!Note]
