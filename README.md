@@ -18,6 +18,7 @@ The transformation prevents type errors in Python 3.8 and 3.9 when evaluating th
 This might be very useful for [writing pydantic models](https://docs.pydantic.dev/2.5/concepts/models/) in Python <=3.10 in a modern fashion, without having to import `typing`.
 
 As a result, in Python 3.8 and Python 3.9, the following code
+
 ```py
 from __future__ import annotations
 from collections import defaultdict
@@ -56,8 +57,9 @@ Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`
 Importing `__modern_types__` will make all `typing._eval_type`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
 
 # Is `__modern_types__` safe to use in production?
-Yes. It shouldn't break any existing codebase. It only uses AST and overwrites `typing.ForwardRef._evaluate`.
-`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and does not do any other dubious things.
+Yes. It doesn't break any existing codebase. It only uses AST and overwrites `typing.ForwardRef._evaluate`.
+`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and does not do any other dubious things
+that could potentially produce weird, unexpected side effects.
 
 # How to use?
 > [!Warning]
@@ -72,9 +74,9 @@ Yes. It shouldn't break any existing codebase. It only uses AST and overwrites `
 
 Simply import `__modern_types__` in your code, and it will make `typing.ForwardRef` instances go through the
 type hint expression AST to try to tweak the copy of the passed global/local namespace
-to use `typing.GenericAlias`s that support `[]` and `|` operators at runtime.
+to use `typing._GenericAlias` instances that support `[]` and `|` operators at runtime.
 
-And now you can use modern types everywhere in your code and the following replacements will be applied without overwriting your parameters:
+Replacements in the built-in scope:
 
 |             Old type              |           New type           | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... |                Backports PEP                 |
 | :-------------------------------: | :--------------------------: | :----------------------------------------------------: | :-------------------------------------------------: | :------------------------------------------: |
@@ -86,8 +88,10 @@ And now you can use modern types everywhere in your code and the following repla
 | `collections.defaultdict[KT, VT]` | `typing.DefaultDict[KT, VT]` |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
 |             `X \| Y`              |     `typing.Union[X, Y]`     |                       **>=3.10**                       |                        >=3.8                        | [PEP 604](https://peps.python.org/pep-0604/) |
 
+Additionally, `__modern_types__` also allows you to use `collections.abc` and `contextlib` generic classes.
+
 > [!Note]
-> Some optional replacements will also be registered if possible,
+> Some optional replacements will automatically also be registered if possible,
 > according to those listed in the [`__modern_types__._typeshed`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_typeshed.py) source code.
 
 ## ProTip: How to subclass built-in generic classes in Python 3.8?
@@ -110,7 +114,7 @@ class YourDictSubclass(dict):
 ```
 so that `YourDictSubclass[str, int]`, for instance, could be used as an evaluable type annotation.
 
-If you want an API that simplifies this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
+If you need an API that simplifies this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
 
 # Installation
 If you want to…
