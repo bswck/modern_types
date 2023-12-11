@@ -14,7 +14,17 @@ class PEP604:
         return typing.Union[self, other]
 
 
-registry: dict[type[Any], _GenericAlias] = {}
+class PEP604GenericAlias(typing._GenericAlias, PEP604, _root=True):  # type: ignore[call-arg,name-defined,misc] # noqa: SLF001
+    def copy_with(self, params: Any) -> Any:
+        return PEP604GenericAlias(
+            self.__origin__,
+            params,
+            name=self._name,
+            inst=self._inst,
+        )
+
+
+registry: dict[type[Any], PEP604GenericAlias] = {}
 
 
 if sys.version_info[:2] == (3, 8):
@@ -22,7 +32,6 @@ if sys.version_info[:2] == (3, 8):
     from typing import (  # type: ignore[attr-defined,unused-ignore]
         TYPE_CHECKING,
         TypeVar,
-        _GenericAlias,
         _VariadicGenericAlias,
     )
 
@@ -38,15 +47,6 @@ if sys.version_info[:2] == (3, 8):
     T_contra = TypeVar("T_contra", contravariant=True)  # Ditto contravariant.
     # Internal type variable used for Type[].
     CT_co = TypeVar("CT_co", covariant=True, bound=type)
-
-    class PEP604GenericAlias(_GenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
-        def copy_with(self, params: Any) -> Any:
-            return PEP604GenericAlias(
-                self.__origin__,
-                params,
-                name=self._name,
-                inst=self._inst,
-            )
 
     class _PEP604VariadicGenericAlias(_VariadicGenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
@@ -138,22 +138,12 @@ elif sys.version_info[:2] == (3, 9):
         TypeVar,
         _CallableGenericAlias,
         _CallableType,
-        _GenericAlias,
         _SpecialGenericAlias,
         _TupleType,
     )
 
     if TYPE_CHECKING:
         from typing import Any
-
-    class PEP604GenericAlias(_GenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
-        def copy_with(self, params: Any) -> Any:
-            return PEP604GenericAlias(
-                self.__origin__,
-                params,
-                name=self._name,
-                inst=self._inst,
-            )
 
     class _PEP604SpecialGenericAlias(_SpecialGenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:

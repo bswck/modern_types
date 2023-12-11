@@ -14,11 +14,12 @@ import builtins
 import sys
 import typing
 
-from __modern_types__._registry import register, registry
+from __modern_types__._registry import PEP604GenericAlias, register, registry
 
 __all__ = (
     "register",
     "registry",
+    "PEP604GenericAlias",
 )
 
 

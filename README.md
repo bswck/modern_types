@@ -88,36 +88,23 @@ And now you can use modern types everywhere in your code and the following repla
 |             `X \| Y`              |     `typing.Union[X, Y]`     |                       **>=3.10**                       |                        >=3.8                        | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
-> Some optional replacements will also be registered if possible, according to those listed in the [`__modern_types__._auto`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_auto.py) source code.
+> Some optional replacements will also be registered if possible, according to those listed in the [`__modern_types__._typeshed`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_typeshed.py) source code.
 
 ## ProTip: How to subclass built-in generic classes in Python 3.8?
-Supposing you are subclassing `dict`, you could write either
-
-```py
-from __future__ import annotations
-
-from typing import Dict, Generic
-
-KT = TypeVar("KT")
-VT = TypeVar("VT")
-
-
-class YourDictSubclass(Dict[KT, VT], Generic[KT, VT]):
-    pass
-```
-
-or
+Supposing you are subclassing `dict`, you could write
 ```py
 from __future__ import annotations
 
 from functools import partial
-from typing import TypeVar, _GenericAlias  # type: ignore[attr-defined]
+from typing import TypeVar
+
+from __modern_types__ import PEP604GenericAlias
 
 KT = TypeVar("KT")
 VT = TypeVar("VT")
 
 
-@partial(_GenericAlias, params=(KT, VT))
+@partial(PEP604GenericAlias, params=(KT, VT))
 class YourDictSubclass(dict):
     pass
 ```
