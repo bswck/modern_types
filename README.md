@@ -11,6 +11,9 @@
 `__modern_types__` aims to provide [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backports for Python <=3.10 deferred type evaluation backward compatibility.
 Hence, the targeted Python versions are 3.8 and 3.9.
 
+> [!Note]
+> The current version does not support variadic generics (`typing_extensions.TypeVarTuple`). They are to come in 2.0.0.
+
 # What does it do?
 Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
 which might happen in pydantic models for example.
@@ -68,58 +71,25 @@ And now you can use modern types everywhere in your code and the following repla
 
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
-## Advanced monkeypatching
-You can use `__modern_types__.monkeypatch` to monkeypatch `typing.get_type_hints` in a more advanced way.
-Assuming your unsubscriptable generic class is `yourproject.module.SomeMapping[KT, VT]`, you could write:
+## ProTip: How to subclass built-in generic classes in Python 3.8?
+Supposing you are subclassing `dict`, you could write:
+
 ```py
-# yourproject/_modern_types.py
-from typing import TypeVar
+from __future__ import annotations
 
-from __modern_types__ import monkeypatch
-
+from functools import partial
+from typing import TypeVar, _GenericAlias  # type: ignore[attr-defined]
 
 KT = TypeVar("KT")
 VT = TypeVar("VT")
 
-def do_monkeypatch() -> None:
-    monkeypatch("yourproject.module.SomeMapping", (KT, VT), stack_offset=2)
-```
-```py
-# yourproject/module.py
-from yourproject._modern_types import do_monkeypatch
 
-
-class SomeMapping(dict):
+@partial(_GenericAlias, params=(KT, VT))
+class YourDictSubclass(dict):
     pass
-
-
-do_monkeypatch()
-```
-will reassign `yourproject.module.SomeMapping` to be `typing._GenericAlias(module.Class, T)`
- in `yourproject.module`.
-
-And now
-```py
-# yourproject/other_module.py
-from __future__ import annotations
-
-from typing import get_type_hints
-
-from yourproject.module import SomeMapping
-
-
-class AnnotationStore:
-    mapping: SomeMapping[str, int]
-
-
-print(get_type_hints(AnnotationStore, globals(), locals()))
-```
-should output
-```
-{'mapping': SomeMapping[str, int]}
 ```
 
-and the user is happy. 😃
+If you want an API for this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
 
 # Can `__modern_types__` be used in production?
 Yes. It shouldn't break most of the existing codebases, despite the monkeypatching.
