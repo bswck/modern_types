@@ -66,12 +66,12 @@ And now you can use modern types everywhere in your code and the following repla
 
 | Old type | New type | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... | Backports PEP |
 |:---:|:---:|:---:|:---:|:---:|
-| `dict[KT, VT]` | `typing.Dict[str, int]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `list[VT]` | `typing.List[int]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `set[int]` | `typing.Set[int]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `tuple[int, ...]` | `typing.Tuple[int, ...]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `frozenset[int]` | `typing.FrozenSet[int]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `collections.defaultdict[int]` | `typing.DefaultDict[int]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `dict[KT, VT]` | `typing.Dict[KT, VT]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `list[T]` | `typing.List[T]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `set[T]` | `typing.Set[T]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `tuple[T, ...]` | `typing.Tuple[T, ...]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `frozenset[T]` | `typing.FrozenSet[T]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `collections.defaultdict[KT, VT]` | `typing.DefaultDict[KT, VT]` | >=3.9 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `X \| Y` | `typing.Union[X, Y]` | **>=3.10** | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
