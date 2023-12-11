@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/github/license/bswck/modern_types.svg?label=License)](https://github.com/bswck/modern_types/blob/HEAD/LICENSE)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-PEP 585 + PEP 604 backports, because it started becoming annoying.
+`__modern_types__` aims to provide [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backports for Python <=3.10 deferred type evaluation backward compatibility. 
 
 # Installation
 If you want to…

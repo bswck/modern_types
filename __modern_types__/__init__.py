@@ -1,7 +1,7 @@
 """
 __modern_types__.
 
-PEP 585 + PEP 604 backports, because it started becoming annoying.
+`__modern_types__` aims to provide [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backports for Python <=3.10 deferred type evaluation backward compatibility. 
 
 (C) 2023-present Bartosz Sławecki (bswck)
 """
