@@ -17,8 +17,8 @@ from __modern_types__._patch import PATCH_STACK_OFFSET, patch
 
 __all__ = (
     "patch",
-    # "builtin_scope_overrides", ???
-    # "PEP604", ???
+    # "AliasBase"?
+    # "builtin_scope_overrides"?
 )
 
 _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
@@ -26,14 +26,19 @@ _WARNING_3_10 = "You do not need to import __modern_types__ on Python >=3.10."
 
 if _PYTHON_VERSION < (3, 10):
 
-    class PEP604:
-        """PEP 604 backport."""
+    class AliasBase:
+        """PEP 604 backport. Subclass check fix."""
+
+        __origin__: typing.Any
+
+        def __subclasscheck__(self, cls: typing.Any) -> bool:
+            return self.__origin__.__subclasscheck__(cls)
 
         def __or__(self, other: type[typing.Any]) -> typing.Any:
             """Implement | operator for X | Y type syntax."""
             return typing.Union[self, other]  # pragma: no cover; coverage bug?
 
-    _GenericAlias.__bases__ += (PEP604,)
+    _GenericAlias.__bases__ += (AliasBase,)
 
     for _g in (
         typing.Tuple,
