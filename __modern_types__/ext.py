@@ -10,6 +10,8 @@ from typing import Any, TypeVar
 
 from __modern_types__ import patch
 
+# fmt: off
+
 # Generated from `TypeVar("AnyStr", str, bytes)`
 # @ typeshed/stdlib/typing.pyi:330
 AnyStr = TypeVar("AnyStr", bound=Any)
@@ -177,489 +179,489 @@ _YieldT_co = TypeVar("_YieldT_co", covariant=True)
 
 # Generated from `class CallableProxyType(Generic[_C]):`
 # @ typeshed/stdlib/_weakref.pyi:13
-patch("_weakref.CallableProxyType", (_C,))
+patch("_weakref.CallableProxyType", (_C,), unimported_cancel=True)
 
 # Generated from `class ProxyType(Generic[_T]):`
 # @ typeshed/stdlib/_weakref.pyi:19
-patch("_weakref.ProxyType", (_T,))
+patch("_weakref.ProxyType", (_T,), unimported_cancel=True)
 
 # Generated from `class ReferenceType(Generic[_T]):`
 # @ typeshed/stdlib/_weakref.pyi:23
-patch("_weakref.ReferenceType", (_T,))
+patch("_weakref.ReferenceType", (_T,), unimported_cancel=True)
 
 # Generated from `class SequenceMatcher(Generic[_T]):`
 # @ typeshed/stdlib/difflib.pyi:30
-patch("difflib.SequenceMatcher", (_T,))
+patch("difflib.SequenceMatcher", (_T,), unimported_cancel=True)
 
 # Generated from `class BaseExceptionGroup(BaseException, Generic[_BaseExceptionT_co]):`
 # @ typeshed/stdlib/builtins.pyi:2092
-patch("builtins.BaseExceptionGroup", (_BaseExceptionT_co,))
+patch("builtins.BaseExceptionGroup", (_BaseExceptionT_co,), unimported_cancel=True)
 
 # Generated from `class Queue(Generic[_T]):`
 # @ typeshed/stdlib/queue.pyi:15
-patch("queue.Queue", (_T,))
+patch("queue.Queue", (_T,), unimported_cancel=True)
 
 # Generated from `class SimpleQueue(Generic[_T]):`
 # @ typeshed/stdlib/queue.pyi:49
-patch("queue.SimpleQueue", (_T,))
+patch("queue.SimpleQueue", (_T,), unimported_cancel=True)
 
 # Generated from `class TemporaryDirectory(Generic[AnyStr]):`
 # @ typeshed/stdlib/tempfile.pyi:571
-patch("tempfile.TemporaryDirectory", (AnyStr,))
+patch("tempfile.TemporaryDirectory", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class CompletedProcess(Generic[_T]):`
 # @ typeshed/stdlib/subprocess.pyi:86
-patch("subprocess.CompletedProcess", (_T,))
+patch("subprocess.CompletedProcess", (_T,), unimported_cancel=True)
 
 # Generated from `class Popen(Generic[AnyStr]):`
 # @ typeshed/stdlib/subprocess.pyi:1843
-patch("subprocess.Popen", (AnyStr,))
+patch("subprocess.Popen", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class KeyedRef(ref[_T], Generic[_KT, _T]):`
 # @ typeshed/stdlib/weakref.pyi:94
-patch("weakref.KeyedRef", (_KT, _T))
+patch("weakref.KeyedRef", (_KT, _T), unimported_cancel=True)
 
 # Generated from `class Field(Generic[_T]):`
 # @ typeshed/stdlib/dataclasses.pyi:118
-patch("dataclasses.Field", (_T,))
+patch("dataclasses.Field", (_T,), unimported_cancel=True)
 
 # Generated from `class Mailbox(Generic[_MessageT]):`
 # @ typeshed/stdlib/mailbox.pyi:49
-patch("mailbox.Mailbox", (_MessageT,))
+patch("mailbox.Mailbox", (_MessageT,), unimported_cancel=True)
 
 # Generated from `class Generator(Iterator[_YieldT_co], Generic[_YieldT_co, _SendT_contra, _ReturnT_co]):`
 # @ typeshed/stdlib/typing.pyi:414
-patch("typing.Generator", (_YieldT_co, _SendT_contra, _ReturnT_co))
+patch("typing.Generator", (_YieldT_co, _SendT_contra, _ReturnT_co), unimported_cancel=True)
 
 # Generated from `class Coroutine(Awaitable[_ReturnT_co], Generic[_YieldT_co, _SendT_contra, _ReturnT_co]):`
 # @ typeshed/stdlib/typing.pyi:442
-patch("typing.Coroutine", (_YieldT_co, _SendT_contra, _ReturnT_co))
+patch("typing.Coroutine", (_YieldT_co, _SendT_contra, _ReturnT_co), unimported_cancel=True)
 
 # Generated from `class AsyncGenerator(AsyncIterator[_YieldT_co], Generic[_YieldT_co, _SendT_contra]):`
 # @ typeshed/stdlib/typing.pyi:487
-patch("typing.AsyncGenerator", (_YieldT_co, _SendT_contra))
+patch("typing.AsyncGenerator", (_YieldT_co, _SendT_contra), unimported_cancel=True)
 
 # Generated from `class ItemsView(MappingView, AbstractSet[tuple[_KT_co, _VT_co]], Generic[_KT_co, _VT_co]):`
 # @ typeshed/stdlib/typing.pyi:599
-patch("typing.ItemsView", (_KT_co, _VT_co))
+patch("typing.ItemsView", (_KT_co, _VT_co), unimported_cancel=True)
 
 # Generated from `class Mapping(Collection[_KT], Generic[_KT, _VT_co]):`
 # @ typeshed/stdlib/typing.pyi:638
-patch("typing.Mapping", (_KT, _VT_co))
+patch("typing.Mapping", (_KT, _VT_co), unimported_cancel=True)
 
 # Generated from `class DictReader(Iterator[_DictReadMapping[_T | Any, str | Any]], Generic[_T]):`
 # @ typeshed/stdlib/csv.pyi:72
-patch("csv.DictReader", (_T,))
+patch("csv.DictReader", (_T,), unimported_cancel=True)
 
 # Generated from `class DictWriter(Generic[_T]):`
 # @ typeshed/stdlib/csv.pyi:120
-patch("csv.DictWriter", (_T,))
+patch("csv.DictWriter", (_T,), unimported_cancel=True)
 
 # Generated from `class TopologicalSorter(Generic[_T]):`
 # @ typeshed/stdlib/graphlib.pyi:13
-patch("graphlib.TopologicalSorter", (_T,))
+patch("graphlib.TopologicalSorter", (_T,), unimported_cancel=True)
 
 # Generated from `class Match(Generic[AnyStr]):`
 # @ typeshed/stdlib/re.pyi:51
-patch("re.Match", (AnyStr,))
+patch("re.Match", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Pattern(Generic[AnyStr]):`
 # @ typeshed/stdlib/re.pyi:108
-patch("re.Pattern", (AnyStr,))
+patch("re.Pattern", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Array(_CData, Generic[_CT]):`
 # @ typeshed/stdlib/_ctypes.pyi:159
-patch("_ctypes.Array", (_CT,))
+patch("_ctypes.Array", (_CT,), unimported_cancel=True)
 
 # Generated from `class ContextVar(Generic[_T]):`
 # @ typeshed/stdlib/contextvars.pyi:16
-patch("contextvars.ContextVar", (_T,))
+patch("contextvars.ContextVar", (_T,), unimported_cancel=True)
 
 # Generated from `class Token(Generic[_T]):`
 # @ typeshed/stdlib/contextvars.pyi:36
-patch("contextvars.Token", (_T,))
+patch("contextvars.Token", (_T,), unimported_cancel=True)
 
 # Generated from `class Morsel(dict[str, Any], Generic[_T]):`
 # @ typeshed/stdlib/http/cookies.pyi:25
-patch("http.cookies.Morsel", (_T,))
+patch("http.cookies.Morsel", (_T,), unimported_cancel=True)
 
 # Generated from `class BaseCookie(dict[str, Morsel[_T]], Generic[_T]):`
 # @ typeshed/stdlib/http/cookies.pyi:50
-patch("http.cookies.BaseCookie", (_T,))
+patch("http.cookies.BaseCookie", (_T,), unimported_cancel=True)
 
 # Generated from `class Deprecated(Generic[_KT, _VT]):`
 # @ typeshed/stdlib/importlib/metadata/__init__.pyi:130
-patch("importlib.metadata.__init__.Deprecated", (_KT, _VT))
+patch("importlib.metadata.__init__.Deprecated", (_KT, _VT), unimported_cancel=True)
 
 # Generated from `class Future(Generic[_T]):`
 # @ typeshed/stdlib/concurrent/futures/_base.pyi:41
-patch("concurrent.futures._base.Future", (_T,))
+patch("concurrent.futures._base.Future", (_T,), unimported_cancel=True)
 
 # Generated from `class DoneAndNotDoneFutures(NamedTuple, Generic[_T]):`
 # @ typeshed/stdlib/concurrent/futures/_base.pyi:76
-patch("concurrent.futures._base.DoneAndNotDoneFutures", (_T,))
+patch("concurrent.futures._base.DoneAndNotDoneFutures", (_T,), unimported_cancel=True)
 
 # Generated from `class FeedParser(Generic[_MessageT]):`
 # @ typeshed/stdlib/email/feedparser.pyi:10
-patch("email.feedparser.FeedParser", (_MessageT,))
+patch("email.feedparser.FeedParser", (_MessageT,), unimported_cancel=True)
 
 # Generated from `class Event(Generic[_W_co]):`
 # @ typeshed/stdlib/tkinter/__init__.pyi:242
-patch("tkinter.__init__.Event", (_W_co,))
+patch("tkinter.__init__.Event", (_W_co,), unimported_cancel=True)
 
 # Generated from `class Counter(dict[_T, int], Generic[_T]):`
 # @ typeshed/stdlib/collections/__init__.pyi:270
-patch("collections.__init__.Counter", (_T,))
+patch("collections.__init__.Counter", (_T,), unimported_cancel=True)
 
 # Generated from `class OrderedDict(dict[_KT, _VT], Reversible[_KT], Generic[_KT, _VT]):`
 # @ typeshed/stdlib/collections/__init__.pyi:353
-patch("collections.__init__.OrderedDict", (_KT, _VT))
+patch("collections.__init__.OrderedDict", (_KT, _VT), unimported_cancel=True)
 
 # Generated from `class LibraryLoader(Generic[_DLLT]):`
 # @ typeshed/stdlib/ctypes/__init__.pyi:79
-patch("ctypes.__init__.LibraryLoader", (_DLLT,))
+patch("ctypes.__init__.LibraryLoader", (_DLLT,), unimported_cancel=True)
 
 # Generated from `class LoggerAdapter(Generic[_L]):`
 # @ typeshed/stdlib/logging/__init__.pyi:443
-patch("logging.__init__.LoggerAdapter", (_L,))
+patch("logging.__init__.LoggerAdapter", (_L,), unimported_cancel=True)
 
 # Generated from `class StreamHandler(Handler, Generic[_StreamT]):`
 # @ typeshed/stdlib/logging/__init__.pyi:822
-patch("logging.__init__.StreamHandler", (_StreamT,))
+patch("logging.__init__.StreamHandler", (_StreamT,), unimported_cancel=True)
 
 # Generated from `class ShareableList(Generic[_SLT]):`
 # @ typeshed/stdlib/multiprocessing/shared_memory.pyi:25
-patch("multiprocessing.shared_memory.ShareableList", (_SLT,))
+patch("multiprocessing.shared_memory.ShareableList", (_SLT,), unimported_cancel=True)
 
 # Generated from `class Queue(Generic[_T]):`
 # @ typeshed/stdlib/multiprocessing/queues.pyi:11
-patch("multiprocessing.queues.Queue", (_T,))
+patch("multiprocessing.queues.Queue", (_T,), unimported_cancel=True)
 
 # Generated from `class SimpleQueue(Generic[_T]):`
 # @ typeshed/stdlib/multiprocessing/queues.pyi:32
-patch("multiprocessing.queues.SimpleQueue", (_T,))
+patch("multiprocessing.queues.SimpleQueue", (_T,), unimported_cancel=True)
 
 # Generated from `class ValueProxy(BaseProxy, Generic[_T]):`
 # @ typeshed/stdlib/multiprocessing/managers.pyi:61
-patch("multiprocessing.managers.ValueProxy", (_T,))
+patch("multiprocessing.managers.ValueProxy", (_T,), unimported_cancel=True)
 
 # Generated from `class ApplyResult(Generic[_T]):`
 # @ typeshed/stdlib/multiprocessing/pool.pyi:15
-patch("multiprocessing.pool.ApplyResult", (_T,))
+patch("multiprocessing.pool.ApplyResult", (_T,), unimported_cancel=True)
 
 # Generated from `class SynchronizedBase(Generic[_CT]):`
 # @ typeshed/stdlib/multiprocessing/sharedctypes.pyi:78
-patch("multiprocessing.sharedctypes.SynchronizedBase", (_CT,))
+patch("multiprocessing.sharedctypes.SynchronizedBase", (_CT,), unimported_cancel=True)
 
 # Generated from `class Synchronized(SynchronizedBase[_SimpleCData[_T]], Generic[_T]):`
 # @ typeshed/stdlib/multiprocessing/sharedctypes.pyi:90
-patch("multiprocessing.sharedctypes.Synchronized", (_T,))
+patch("multiprocessing.sharedctypes.Synchronized", (_T,), unimported_cancel=True)
 
 # Generated from `class SynchronizedArray(SynchronizedBase[ctypes.Array[_CT]], Generic[_CT]):`
 # @ typeshed/stdlib/multiprocessing/sharedctypes.pyi:93
-patch("multiprocessing.sharedctypes.SynchronizedArray", (_CT,))
+patch("multiprocessing.sharedctypes.SynchronizedArray", (_CT,), unimported_cancel=True)
 
 # Generated from `class DirEntry(Generic[AnyStr]):`
 # @ typeshed/stdlib/os/__init__.pyi:402
-patch("os.__init__.DirEntry", (AnyStr,))
+patch("os.__init__.DirEntry", (AnyStr,), unimported_cancel=True)
 
 
 # Generated from `class AsyncResult(AbstractLinkable, Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/event.pyi:33
-patch("gevent.event.AsyncResult", (_T,))
+patch("gevent.event.AsyncResult", (_T,), unimported_cancel=True)
 
 # Generated from `class BaseServer(Generic[_P]):`
 # @ typeshed/stubs/gevent/gevent/baseserver.pyi:18
-patch("gevent.baseserver.BaseServer", (_P,))
+patch("gevent.baseserver.BaseServer", (_P,), unimported_cancel=True)
 
 # Generated from `class Queue(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/queue.pyi:16
-patch("gevent.queue.Queue", (_T,))
+patch("gevent.queue.Queue", (_T,), unimported_cancel=True)
 
 # Generated from `class Channel(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/queue.pyi:68
-patch("gevent.queue.Channel", (_T,))
+patch("gevent.queue.Channel", (_T,), unimported_cancel=True)
 
 # Generated from `class OpenDescriptor(Generic[_IOT]):`
 # @ typeshed/stubs/gevent/gevent/_fileobjectcommon.pyi:38
-patch("gevent._fileobjectcommon.OpenDescriptor", (_IOT,))
+patch("gevent._fileobjectcommon.OpenDescriptor", (_IOT,), unimported_cancel=True)
 
 # Generated from `class FileObjectBase(Generic[_IOT, AnyStr]):`
 # @ typeshed/stubs/gevent/gevent/_fileobjectcommon.pyi:82
-patch("gevent._fileobjectcommon.FileObjectBase", (_IOT, AnyStr))
+patch("gevent._fileobjectcommon.FileObjectBase", (_IOT, AnyStr), unimported_cancel=True)
 
 # Generated from `class Waiter(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_waiter.pyi:23
-patch("gevent._waiter.Waiter", (_T,))
+patch("gevent._waiter.Waiter", (_T,), unimported_cancel=True)
 
 # Generated from `class ThreadResult(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/threadpool.pyi:39
-patch("gevent.threadpool.ThreadResult", (_T,))
+patch("gevent.threadpool.ThreadResult", (_T,), unimported_cancel=True)
 
 # Generated from `class Greenlet(greenlet.greenlet, Generic[_P, _T]):`
 # @ typeshed/stubs/gevent/gevent/greenlet.pyi:15
-patch("gevent.greenlet.Greenlet", (_P, _T))
+patch("gevent.greenlet.Greenlet", (_P, _T), unimported_cancel=True)
 
 # Generated from `class ImportableSetting(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_config.pyi:76
-patch("gevent._config.ImportableSetting", (_T,))
+patch("gevent._config.ImportableSetting", (_T,), unimported_cancel=True)
 
 # Generated from `class Queue(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_threading.pyi:11
-patch("gevent._threading.Queue", (_T,))
+patch("gevent._threading.Queue", (_T,), unimported_cancel=True)
 
 # Generated from `class Lazy(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_util.pyi:24
-patch("gevent._util.Lazy", (_T,))
+patch("gevent._util.Lazy", (_T,), unimported_cancel=True)
 
 # Generated from `class LazyOnClass(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_util.pyi:40
-patch("gevent._util.LazyOnClass", (_T,))
+patch("gevent._util.LazyOnClass", (_T,), unimported_cancel=True)
 
 # Generated from `class Result(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/resolver/cares.pyi:12
-patch("gevent.resolver.cares.Result", (_T,))
+patch("gevent.resolver.cares.Result", (_T,), unimported_cancel=True)
 
 # Generated from `class BufferedFile(ClosingContextManager, Generic[AnyStr]):`
 # @ typeshed/stubs/paramiko/paramiko/file.pyi:6
-patch("paramiko.file.BufferedFile", (AnyStr,))
+patch("paramiko.file.BufferedFile", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class BufferedPipe(Generic[AnyStr]):`
 # @ typeshed/stubs/paramiko/paramiko/buffered_pipe.pyi:6
-patch("paramiko.buffered_pipe.BufferedPipe", (AnyStr,))
+patch("paramiko.buffered_pipe.BufferedPipe", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Method(Frame, Generic[_M]):`
 # @ typeshed/stubs/pika/pika/frame.pyi:19
-patch("pika.frame.Method", (_M,))
+patch("pika.frame.Method", (_M,), unimported_cancel=True)
 
 # Generated from `class ClosableDeferredQueue(DeferredQueue[_T], Generic[_T]):`
 # @ typeshed/stubs/pika/pika/adapters/twisted_connection.pyi:22
-patch("pika.adapters.twisted_connection.ClosableDeferredQueue", (_T,))
+patch("pika.adapters.twisted_connection.ClosableDeferredQueue", (_T,), unimported_cancel=True)
 
 # Generated from `class ThresholdCounter(Generic[_T]):`
 # @ typeshed/stubs/boltons/boltons/cacheutils.pyi:82
-patch("boltons.cacheutils.ThresholdCounter", (_T,))
+patch("boltons.cacheutils.ThresholdCounter", (_T,), unimported_cancel=True)
 
 # Generated from `class MinIDMap(Generic[_T]):`
 # @ typeshed/stubs/boltons/boltons/cacheutils.pyi:105
-patch("boltons.cacheutils.MinIDMap", (_T,))
+patch("boltons.cacheutils.MinIDMap", (_T,), unimported_cancel=True)
 
 # Generated from `class QRCode(Generic[GenericImage]):`
 # @ typeshed/stubs/qrcode/qrcode/main.pyi:28
-patch("qrcode.main.QRCode", (GenericImage,))
+patch("qrcode.main.QRCode", (GenericImage,), unimported_cancel=True)
 
 # Generated from `class SearchResultObject(StripeObject, Generic[_T]):`
 # @ typeshed/stubs/stripe/stripe/api_resources/search_result_object.pyi:9
-patch("stripe.api_resources.search_result_object.SearchResultObject", (_T,))
+patch("stripe.api_resources.search_result_object.SearchResultObject", (_T,), unimported_cancel=True)
 
 # Generated from `class AsyncBase(Generic[_T]):`
 # @ typeshed/stubs/aiofiles/aiofiles/base.pyi:11
-patch("aiofiles.base.AsyncBase", (_T,))
+patch("aiofiles.base.AsyncBase", (_T,), unimported_cancel=True)
 
 # Generated from `class AiofilesContextManager(Generic[_T_co, _T_contra, _V_co]):`
 # @ typeshed/stubs/aiofiles/aiofiles/base.pyi:19
-patch("aiofiles.base.AiofilesContextManager", (_T_co, _T_contra, _V_co))
+patch("aiofiles.base.AiofilesContextManager", (_T_co, _T_contra, _V_co), unimported_cancel=True)
 
 # Generated from `class Splitter(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/_regex.pyi:12
-patch("regex._regex.Splitter", (AnyStr,))
+patch("regex._regex.Splitter", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Scanner(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/_regex.pyi:20
-patch("regex._regex.Scanner", (AnyStr,))
+patch("regex._regex.Scanner", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Pattern(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/regex.pyi:323
-patch("regex.regex.Pattern", (AnyStr,))
+patch("regex.regex.Pattern", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Match(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/regex.pyi:574
-patch("regex.regex.Match", (AnyStr,))
+patch("regex.regex.Match", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class Scanner(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/_regex_core.pyi:86
-patch("regex._regex_core.Scanner", (AnyStr,))
+patch("regex._regex_core.Scanner", (AnyStr,), unimported_cancel=True)
 
 # Generated from `class SassFunction(Generic[_P, _T]):`
 # @ typeshed/stubs/libsass/sass.pyi:30
-patch("sass.SassFunction", (_P, _T))
+patch("sass.SassFunction", (_P, _T), unimported_cancel=True)
 
 # Generated from `class TomlEncoder(Generic[_MappingT]):`
 # @ typeshed/stubs/toml/toml/encoder.pyi:10
-patch("toml.encoder.TomlEncoder", (_MappingT,))
+patch("toml.encoder.TomlEncoder", (_MappingT,), unimported_cancel=True)
 
 # Generated from `class TomlDecoder(Generic[_MutableMappingT]):`
 # @ typeshed/stubs/toml/toml/decoder.pyi:49
-patch("toml.decoder.TomlDecoder", (_MutableMappingT,))
+patch("toml.decoder.TomlDecoder", (_MutableMappingT,), unimported_cancel=True)
 
 # Generated from `class Connection(Generic[_C]):`
 # @ typeshed/stubs/PyMySQL/pymysql/connections.pyi:58
-patch("pymysql.connections.Connection", (_C,))
+patch("pymysql.connections.Connection", (_C,), unimported_cancel=True)
 
 # Generated from `class UnboundField(Generic[_FieldT]):`
 # @ typeshed/stubs/WTForms/wtforms/fields/core.pyi:101
-patch("wtforms.fields.core.UnboundField", (_FieldT,))
+patch("wtforms.fields.core.UnboundField", (_FieldT,), unimported_cancel=True)
 
 # Generated from `class FieldList(Field, Generic[_BoundFieldT]):`
 # @ typeshed/stubs/WTForms/wtforms/fields/list.pyi:10
-patch("wtforms.fields.list.FieldList", (_BoundFieldT,))
+patch("wtforms.fields.list.FieldList", (_BoundFieldT,), unimported_cancel=True)
 
 # Generated from `class FormField(Field, Generic[_BoundFormT]):`
 # @ typeshed/stubs/WTForms/wtforms/fields/form.pyi:10
-patch("wtforms.fields.form.FormField", (_BoundFormT,))
+patch("wtforms.fields.form.FormField", (_BoundFormT,), unimported_cancel=True)
 
 # Generated from `class RedisCluster(AbstractRedis, AbstractRedisCluster, Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/asyncio/cluster.pyi:23
-patch("redis.asyncio.cluster.RedisCluster", (_StrType,))
+patch("redis.asyncio.cluster.RedisCluster", (_StrType,), unimported_cancel=True)
 
 # Generated from `class ClusterPipeline(AbstractRedis, AbstractRedisCluster, Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/asyncio/cluster.pyi:155
-patch("redis.asyncio.cluster.ClusterPipeline", (_StrType,))
+patch("redis.asyncio.cluster.ClusterPipeline", (_StrType,), unimported_cancel=True)
 
 # Generated from `class ACLCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:15
-patch("redis.commands.core.ACLCommands", (_StrType,))
+patch("redis.commands.core.ACLCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncACLCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:47
-patch("redis.commands.core.AsyncACLCommands", (_StrType,))
+patch("redis.commands.core.AsyncACLCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class BasicKeyCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:315
-patch("redis.commands.core.BasicKeyCommands", (_StrType,))
+patch("redis.commands.core.BasicKeyCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncBasicKeyCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:433
-patch("redis.commands.core.AsyncBasicKeyCommands", (_StrType,))
+patch("redis.commands.core.AsyncBasicKeyCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class ListCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:551
-patch("redis.commands.core.ListCommands", (_StrType,))
+patch("redis.commands.core.ListCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncListCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:621
-patch("redis.commands.core.AsyncListCommands", (_StrType,))
+patch("redis.commands.core.AsyncListCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class ScanCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:691
-patch("redis.commands.core.ScanCommands", (_StrType,))
+patch("redis.commands.core.ScanCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncScanCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:752
-patch("redis.commands.core.AsyncScanCommands", (_StrType,))
+patch("redis.commands.core.AsyncScanCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class SetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:815
-patch("redis.commands.core.SetCommands", (_StrType,))
+patch("redis.commands.core.SetCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncSetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:838
-patch("redis.commands.core.AsyncSetCommands", (_StrType,))
+patch("redis.commands.core.AsyncSetCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class SortedSetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:993
-patch("redis.commands.core.SortedSetCommands", (_StrType,))
+patch("redis.commands.core.SortedSetCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncSortedSetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1192
-patch("redis.commands.core.AsyncSortedSetCommands", (_StrType,))
+patch("redis.commands.core.AsyncSortedSetCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class HashCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1407
-patch("redis.commands.core.HashCommands", (_StrType,))
+patch("redis.commands.core.HashCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncHashCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1432
-patch("redis.commands.core.AsyncHashCommands", (_StrType,))
+patch("redis.commands.core.AsyncHashCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class ScriptCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1475
-patch("redis.commands.core.ScriptCommands", (_StrType,))
+patch("redis.commands.core.ScriptCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class AsyncScriptCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1485
-patch("redis.commands.core.AsyncScriptCommands", (_StrType,))
+patch("redis.commands.core.AsyncScriptCommands", (_StrType,), unimported_cancel=True)
 
 # Generated from `class Registry(Generic[_T]):`
 # @ typeshed/stubs/Markdown/markdown/util.pyi:54
-patch("markdown.util.Registry", (_T,))
+patch("markdown.util.Registry", (_T,), unimported_cancel=True)
 
 # Generated from `class Literal(Composable, Generic[_T]):`
 # @ typeshed/stubs/psycopg2/psycopg2/sql.pyi:38
-patch("psycopg2.sql.Literal", (_T,))
+patch("psycopg2.sql.Literal", (_T,), unimported_cancel=True)
 
 # Generated from `class Descriptor(Generic[_T]):`
 # @ typeshed/stubs/openpyxl/openpyxl/descriptors/base.pyi:24
-patch("openpyxl.descriptors.base.Descriptor", (_T,))
+patch("openpyxl.descriptors.base.Descriptor", (_T,), unimported_cancel=True)
 
 # Generated from `class Typed(Descriptor[_T], Generic[_T, _N]):`
 # @ typeshed/stubs/openpyxl/openpyxl/descriptors/base.pyi:30
-patch("openpyxl.descriptors.base.Typed", (_T, _N))
+patch("openpyxl.descriptors.base.Typed", (_T, _N), unimported_cancel=True)
 
 # Generated from `class MatchPattern(Descriptor[_P], Generic[_P, _N]):`
 # @ typeshed/stubs/openpyxl/openpyxl/descriptors/base.pyi:302
-patch("openpyxl.descriptors.base.MatchPattern", (_P, _N))
+patch("openpyxl.descriptors.base.MatchPattern", (_P, _N), unimported_cancel=True)
 
 # Generated from `class CustomPropertyList(Strict, Generic[_T]):`
 # @ typeshed/stubs/openpyxl/openpyxl/packaging/custom.pyi:49
-patch("openpyxl.packaging.custom.CustomPropertyList", (_T,))
+patch("openpyxl.packaging.custom.CustomPropertyList", (_T,), unimported_cancel=True)
 
 # Generated from `class DimensionHolder(BoundDictionary[str, _DimT], Generic[_DimT]):`
 # @ typeshed/stubs/openpyxl/openpyxl/worksheet/dimensions.pyi:103
-patch("openpyxl.worksheet.dimensions.DimensionHolder", (_DimT,))
+patch("openpyxl.worksheet.dimensions.DimensionHolder", (_DimT,), unimported_cancel=True)
 
 # Generated from `class ArrayDescriptor(Generic[_T]):`
 # @ typeshed/stubs/openpyxl/openpyxl/styles/cell_style.pyi:15
-patch("openpyxl.styles.cell_style.ArrayDescriptor", (_T,))
+patch("openpyxl.styles.cell_style.ArrayDescriptor", (_T,), unimported_cancel=True)
 
 # Generated from `class Visitor(ast.NodeVisitor, Generic[TConfig]):`
 # @ typeshed/stubs/flake8-plugin-utils/flake8_plugin_utils/plugin.pyi:19
-patch("flake8_plugin_utils.plugin.Visitor", (TConfig,))
+patch("flake8_plugin_utils.plugin.Visitor", (TConfig,), unimported_cancel=True)
 
 # Generated from `class Plugin(Generic[TConfig]):`
 # @ typeshed/stubs/flake8-plugin-utils/flake8_plugin_utils/plugin.pyi:29
-patch("flake8_plugin_utils.plugin.Plugin", (TConfig,))
+patch("flake8_plugin_utils.plugin.Plugin", (TConfig,), unimported_cancel=True)
 
 # Generated from `class CaseInsensitiveDict(MutableMapping[str, _VT], Generic[_VT]):`
 # @ typeshed/stubs/requests/requests/structures.pyi:7
-patch("requests.structures.CaseInsensitiveDict", (_VT,))
+patch("requests.structures.CaseInsensitiveDict", (_VT,), unimported_cancel=True)
 
 # Generated from `class Formatter(Generic[_T]):`
 # @ typeshed/stubs/Pygments/pygments/formatter.pyi:5
-patch("pygments.formatter.Formatter", (_T,))
+patch("pygments.formatter.Formatter", (_T,), unimported_cancel=True)
 
 # Generated from `class TypeSpec(ABC, Generic[_SpecProto]):`
 # @ typeshed/stubs/tensorflow/tensorflow/__init__.pyi:348
-patch("tensorflow.__init__.TypeSpec", (_SpecProto,))
+patch("tensorflow.__init__.TypeSpec", (_SpecProto,), unimported_cancel=True)
 
 # Generated from `class Dataset(ABC, Generic[_T1]):`
 # @ typeshed/stubs/tensorflow/tensorflow/data/__init__.pyi:30
-patch("tensorflow.data.__init__.Dataset", (_T1,))
+patch("tensorflow.data.__init__.Dataset", (_T1,), unimported_cancel=True)
 
 # Generated from `class Layer(tf.Module, Generic[_InputT, _OutputT]):`
 # @ typeshed/stubs/tensorflow/tensorflow/keras/layers.pyi:41
-patch("tensorflow.keras.layers.Layer", (_InputT, _OutputT))
+patch("tensorflow.keras.layers.Layer", (_InputT, _OutputT), unimported_cancel=True)
 
 # Generated from `class Optional(ABC, Generic[_T_co]):`
 # @ typeshed/stubs/tensorflow/tensorflow/experimental/__init__.pyi:7
-patch("tensorflow.experimental.__init__.Optional", (_T_co,))
+patch("tensorflow.experimental.__init__.Optional", (_T_co,), unimported_cancel=True)
 
 # Generated from `class NonDataProperty(Generic[_T]):`
 # @ typeshed/stubs/setuptools/setuptools/command/test.pyi:16
-patch("setuptools.command.test.NonDataProperty", (_T,))
+patch("setuptools.command.test.NonDataProperty", (_T,), unimported_cancel=True)
 
 # Generated from `class ConfigHandler(Generic[Target]):`
 # @ typeshed/stubs/setuptools/setuptools/config/setupcfg.pyi:26
-patch("setuptools.config.setupcfg.ConfigHandler", (Target,))
+patch("setuptools.config.setupcfg.ConfigHandler", (Target,), unimported_cancel=True)
 
 # Generated from `class FlexibleAlias(Generic[_T, _U]):`
 # @ typeshed/stubs/mypy-extensions/mypy_extensions.pyi:78
-patch("mypy_extensions.FlexibleAlias", (_T, _U))
+patch("mypy_extensions.FlexibleAlias", (_T, _U), unimported_cancel=True)
 
 # Generated from `class Events(Generic[_T, _AbstractListener_T]):`
 # @ typeshed/stubs/pynput/pynput/_util.pyi:52
-patch("pynput._util.Events", (_T, _AbstractListener_T))
+patch("pynput._util.Events", (_T, _AbstractListener_T), unimported_cancel=True)
 
 # Generated from `class TypeChecker(Generic[_T]):`
 # @ typeshed/stubs/protobuf/google/protobuf/internal/type_checkers.pyi:9
-patch("google.protobuf.internal.type_checkers.TypeChecker", (_T,))
+patch("google.protobuf.internal.type_checkers.TypeChecker", (_T,), unimported_cancel=True)

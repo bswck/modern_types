@@ -36,6 +36,8 @@ ${imports}
 
 from __modern_types__ import patch
 
+# fmt: off
+
 ${type_variables}
 
 ${stdlib_patches}
@@ -98,11 +100,11 @@ class GenericSignature:
         return str(self.location)
 
     @property
-    def patch_call(self) -> str:
+    def patch_call_expr(self) -> str:
         return (
             f"# Generated from `{self.location.match.group(0)}`\n"
             f'# @ {self.where}\npatch("{self.ref}", '
-            f"{self.param_tuple_string})\n"
+            f"{self.param_tuple_string}, unimported_cancel=True)\n"
         )
 
     def __str__(self) -> str:
@@ -219,11 +221,11 @@ def generate_ext_script(path: Path[str] = Path("__modern_types__/ext.py")) -> No
     path.write_text(
         EXT_TEMPLATE.substitute(
             stdlib_patches="\n".join(
-                generic.patch_call
+                generic.patch_call_expr
                 for generic in map(collect_type_vars, find_generics(root="stdlib"))
             ),
             third_party_patches="\n".join(
-                generic.patch_call
+                generic.patch_call_expr
                 for generic in map(collect_type_vars, find_generics(root="stubs/*"))
             ),
             type_variables="\n".join(
