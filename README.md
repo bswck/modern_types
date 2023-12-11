@@ -10,6 +10,45 @@
 
 PEP 585 + PEP 604 backports, because it started becoming annoying.
 
+# What does it do?
+Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
+which might happen in pydantic models for example.
+
+```py
+from __future__ import annotations
+from typing import get_type_hints
+
+import __modern_types__
+
+class Foo:
+    a: dict[str, int]
+    b: list[int]
+    c: set[int]
+    d: tuple[int, ...] | None
+    e: frozenset[int]
+
+print(get_type_hints(Foo))
+```
+gives:
+```py
+{
+    "a": Dict[str, int],
+    "b": List[int],
+    "c": Set[int],
+    "d": Union[Tuple[int, ...], None],
+    "e": FrozenSet[int],
+}
+```
+
+# How to use?
+Simply import `__modern_types__` in your code, and it will override the default global namespace of `typing.get_type_hints`.
+
+And now you can use modern types everywhere in your code and completely forget that `typing.Dict`, `typing.List`, etc. ever existed!
+
+# Can it be used in production?
+Yes, it won't break anything. The hack simply overrides the default global namespace of `typing.get_type_hints`,
+but if some keys that `__modern_types__` would supply are present, they are used instead.
+
 # Installation
 If you want to…
 
