@@ -76,6 +76,8 @@ if _PYTHON_VERSION < (3, 10):
 
     # We are very kind and we will fixup `get_type_hints` for all modules that import us.
     # To overcome this, make a reference that wraps `get_type_hints` in some other object.
+    stack_offset = 1
+
     for offset, frame_info in enumerate(inspect.stack()):
         if __name__ in "".join(frame_info.code_context or ()):
             stack_offset = offset
