@@ -35,11 +35,6 @@ if _PYTHON_VERSION < (3, 10):
 
     _GenericAlias.__bases__ += (PEP604,)
 
-    if _PYTHON_VERSION == (3, 9):
-        import types
-
-        types.GenericAlias = _GenericAlias
-
     for _g in (
         typing.Tuple,
         typing.List,

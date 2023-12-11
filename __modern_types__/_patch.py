@@ -5,18 +5,14 @@ from __future__ import annotations
 import inspect
 import sys
 from contextvars import ContextVar
-from typing import TYPE_CHECKING, _GenericAlias
-
-if TYPE_CHECKING:
-    from typing import TypeVar
-
+from typing import _GenericAlias  # type: ignore[attr-defined]
 
 PATCH_STACK_OFFSET = ContextVar("PATCH_STACK_OFFSET", default=1)
 
 
 def patch(
     ref: str,
-    type_vars: list[TypeVar],
+    type_vars: tuple[object, ...],
     stack_offset: int | None = None,
     *,
     noop_ok: bool = False,
