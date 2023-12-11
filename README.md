@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/github/license/bswck/modern_types.svg?label=License)](https://github.com/bswck/modern_types/blob/HEAD/LICENSE)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-`__modern_types__` aims to provide [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backports for Python <=3.10 deferred type evaluation backward compatibility.
+`__modern_types__` aims to provide [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backward compatibility for Python <=3.10 deferred type evaluation.
 Hence, the targeted Python versions are 3.8 and 3.9.
 
 > [!Note]
@@ -47,7 +47,7 @@ gives:
 ```
 
 # Use case
-Keep your codebase up-to-date by speeding up migrating to modern types, even if you support Python versions >=3.8,<=3.10.
+Keep your codebase up-to-date by speeding up migrating to modern types, even if you support Python versions >=3.8.
 Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
 Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
 
@@ -67,7 +67,7 @@ And now you can use modern types everywhere in your code and the following repla
 | `X \| Y` | `typing.Union[X, Y]` | **>=3.10** | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
-> Some optional replacements will also be performed if possible, according to those listed in the [`__modern_types__.ext`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/ext.py) source code.
+> Some optional replacements will also be performed if possible, according to those listed in the [`__modern_types__._auto`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_auto.py) source code.
 
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
