@@ -85,7 +85,6 @@ Replacements in the built-in scope:
 |             `set[T]`              |       `typing.Set[T]`        |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
 |          `tuple[T, ...]`          |    `typing.Tuple[T, ...]`    |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
 |          `frozenset[T]`           |    `typing.FrozenSet[T]`     |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
-| `collections.defaultdict[KT, VT]` | `typing.DefaultDict[KT, VT]` |                         >=3.9                          |                        >=3.8                        | [PEP 585](https://peps.python.org/pep-0585/) |
 |             `X \| Y`              |     `typing.Union[X, Y]`     |                       **>=3.10**                       |                        >=3.8                        | [PEP 604](https://peps.python.org/pep-0604/) |
 
 Additionally, `__modern_types__` also allows you to use `collections.abc` and `contextlib` generic classes.
