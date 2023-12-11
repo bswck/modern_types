@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v2.0.0](https://github.com/bswck/modern_types/tree/v2.0.0) (2023-12-11)
+
+
+### Fixed
+
+- Rewrote the lib to use AST for overwriting namespaces, stopped mutating developer-end namespaces.
+
+
 ## [v1.0.8](https://github.com/bswck/modern_types/tree/v1.0.8) (2023-12-11)
 
 
