@@ -75,8 +75,7 @@ if _PYTHON_VERSION < (3, 10):
         )
 
     _collections_defaultdict = collections.defaultdict
-    if _PYTHON_VERSION == (3, 8):
-        collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
+    collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
 
     typing.get_type_hints = typing.cast(typing.Any, _wrap_get_type_hints)
 
@@ -91,7 +90,7 @@ if _PYTHON_VERSION < (3, 10):
             for key, val in vars(importer).items():
                 if val is _typing_get_type_hints:
                     setattr(importer, key, _wrap_get_type_hints)
-                if _PYTHON_VERSION == (3, 8) and val is _collections_defaultdict:
+                if val is _collections_defaultdict:
                     setattr(importer, key, typing.DefaultDict)
 
     MONKEYPATCH_STACK_OFFSET.set(stack_offset)

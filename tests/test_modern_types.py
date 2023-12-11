@@ -36,7 +36,7 @@ if _PYTHON_VERSION <= (3, 9):
         monkeypatch(__name__ + ".ListType", T)  # TODO(bswck): support variadic generics
         assert ListType[int] == List[int]
 
-if _PYTHON_VERSION <= (3, 8):
+if _PYTHON_VERSION <= (3, 9):
    def test_modern_types() -> None:
         assert defaultdict() == {}
         assert defaultdict is DefaultDict
@@ -47,17 +47,6 @@ if _PYTHON_VERSION <= (3, 8):
             "d": Union[Tuple[int, ...], None],
             "e": FrozenSet[int],
             "f": DefaultDict[str, int],
-        }
-elif _PYTHON_VERSION == (3, 9):
-    def test_modern_types() -> None:
-        assert defaultdict is not DefaultDict  # replacement was not needed
-        assert get_type_hints(Foo, globals(), locals()) == {
-            "a": Dict[str, int],
-            "b": List[int],
-            "c": Set[int],
-            "d": Union[Tuple[int, ...], None],
-            "e": FrozenSet[int],
-            "f": defaultdict[str, int],
         }
 else:
     # Handling 3.10+ versions is intended to ensure that the library
