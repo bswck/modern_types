@@ -62,14 +62,14 @@ if _PYTHON_VERSION < (3, 10):
         "type": typing.Type,
     }
 
-    _typing_eval_type = typing._eval_type  # noqa: SLF001
+    _typing_eval_type = typing._eval_type  # type: ignore[attr-defined] #  noqa: SLF001
 
     def _wrap_eval_type(
         obj: typing.Any,
         globalns: dict[str, typing.Any] | None = None,
         localns: dict[str, typing.Any] | None = None,
         recursive_guard: typing.Any = None,
-    ) -> dict[str, typing.Any]:
+    ) -> typing.Any:
         """PEP 585 & PEP 604 backport."""
         return _typing_eval_type(
             obj,
@@ -81,7 +81,7 @@ if _PYTHON_VERSION < (3, 10):
     _collections_defaultdict = collections.defaultdict
     collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
 
-    typing._eval_type = typing.cast(typing.Any, _wrap_eval_type)  # noqa: SLF001
+    typing._eval_type = typing.cast(typing.Any, _wrap_eval_type)  # type: ignore[attr-defined] #  noqa: SLF001
 
     # We are very kind and we will fixup `get_type_hints` for all modules that import us.
     # To overcome this, make a reference that wraps `get_type_hints` in some other object.
