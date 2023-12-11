@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/github/license/bswck/modern_types.svg?label=License)](https://github.com/bswck/modern_types/blob/HEAD/LICENSE)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-PEP 585 + PEP 604 backports, because it started becoming annoying.
+[PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backports for Python <=3.10 deferred type evaluation backward compatibility.
 
 # What does it do?
 Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
@@ -16,6 +16,8 @@ which might happen in pydantic models for example.
 
 ```py
 from __future__ import annotations
+from pprint import pprint
+from collections import defaultdict
 from typing import get_type_hints
 
 import __modern_types__
@@ -26,26 +28,43 @@ class Foo:
     c: set[int]
     d: tuple[int, ...] | None
     e: frozenset[int]
+    f: defaultdict[str, int]
 
-print(get_type_hints(Foo))
+pprint(get_type_hints(Foo, globals(), locals()))
 ```
 gives:
 ```py
-{
-    "a": Dict[str, int],
-    "b": List[int],
-    "c": Set[int],
-    "d": Union[Tuple[int, ...], None],
-    "e": FrozenSet[int],
-}
+{"a": typing.Dict[str, int],
+ "b": typing.List[int],
+ "c": typing.Set[int],
+ "d": typing.Union[typing.Tuple[int, ...], None],
+ "e": typing.FrozenSet[int],
+ "f": typing.DefaultDict[str, int]}
 ```
 
 # How to use?
 Simply import `__modern_types__` in your code, and it will override the default global namespace of `typing.get_type_hints`.
 
-And now you can use modern types everywhere in your code and completely forget that `typing.Dict`, `typing.List`, etc. ever existed!
+And now you can use modern types everywhere in your code and the following replacements will be applied without overwriting your parameters:
 
-# Can it be used in production?
+| Old type | New type | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... | Backports PEP |
+| --- | --- | --- | --- |
+| `dict[KT, VT]` | `typing.Dict[str, int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `list[VT]` | `typing.List[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `set[int]` | `typing.Set[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `tuple[int, ...]` | `typing.Tuple[int, ...]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `frozenset[int]` | `typing.FrozenSet[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `collections.defaultdict[int]` | `typing.DefaultDict[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
+| `X | Y` | `typing.Union[X, Y]` | >=3.9 | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
+
+`__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
+
+# Use case
+Keep your codebase up-to-date by speeding up migrating to modern types, even if you support Python versions >=3.8,<=3.10.
+Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
+Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
+
+# Can `__modern_types__` be used in production?
 Yes, it won't break anything. The hack simply overrides the default global namespace of `typing.get_type_hints`,
 but if some keys that `__modern_types__` would supply are present, they are used instead.
 
