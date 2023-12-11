@@ -20,9 +20,6 @@ Coverage = "https://coverage-badge.samuelcolvin.workers.dev/redirect/bswck/moder
 
 [tool.poetry.dependencies]
 python = ">=3.8,<=3.12"
-typing-extensions = "^4.9.0"
-
-[tool.poetry.group.dev.dependencies]
 
 [tool.poetry.group.dev-skeleton.dependencies]
 # This dependency group was generated from bswck/skeleton@4089ffe.
