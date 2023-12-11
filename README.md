@@ -42,7 +42,7 @@ gives:
 {"a": typing.Dict[str, int],
  "b": typing.List[int],
  "c": typing.Set[int],
- "d": typing.Union[typing.Tuple[int, ...], None],
+ "d": typing.Optional[typing.Tuple[int, ...]],
  "e": typing.FrozenSet[int],
  "f": typing.DefaultDict[str, int]}
 ```
