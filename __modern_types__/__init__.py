@@ -69,7 +69,7 @@ if _PYTHON_VERSION < (3, 10):
             *(() if _PYTHON_VERSION == (3, 8) else (recursive_guard,)),
         )
 
-    typing.ForwardRef._evaluate = typing.cast(typing.Any, _wrap_evaluate)  # type: ignore[attr-defined] #  noqa: SLF001
+    typing.ForwardRef._evaluate = typing.cast(typing.Any, _wrap_evaluate)  # type: ignore[attr-defined,method-assign,unused-ignore] #  noqa: SLF001
 
     # Automatically patch other modules
     import __modern_types__._typeshed  # noqa: F401

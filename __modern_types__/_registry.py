@@ -19,7 +19,7 @@ registry: dict[type[Any], _GenericAlias] = {}
 
 if sys.version_info[:2] == (3, 8):
     from functools import partial
-    from typing import (
+    from typing import (  # type: ignore[attr-defined,unused-ignore]
         TYPE_CHECKING,
         TypeVar,
         _GenericAlias,
@@ -39,7 +39,7 @@ if sys.version_info[:2] == (3, 8):
     # Internal type variable used for Type[].
     CT_co = TypeVar("CT_co", covariant=True, bound=type)
 
-    class PEP604GenericAlias(_GenericAlias, PEP604, _root=True):
+    class PEP604GenericAlias(_GenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
             return PEP604GenericAlias(
                 self.__origin__,
@@ -48,7 +48,7 @@ if sys.version_info[:2] == (3, 8):
                 inst=self._inst,
             )
 
-    class _PEP604VariadicGenericAlias(_VariadicGenericAlias, PEP604, _root=True):
+    class _PEP604VariadicGenericAlias(_VariadicGenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
             return PEP604GenericAlias(
                 self.__origin__,
@@ -74,7 +74,7 @@ if sys.version_info[:2] == (3, 8):
             collections.abc.Reversible: _alias(collections.abc.Reversible, T_co),
             collections.abc.Container: _alias(collections.abc.Container, T_co),
             collections.abc.Collection: _alias(collections.abc.Collection, T_co),
-            collections.abc.Callable: _VariadicGenericAlias(
+            collections.abc.Callable: _VariadicGenericAlias(  # type: ignore[dict-item,unused-ignore]
                 collections.abc.Callable,
                 (),
                 special=True,
@@ -133,7 +133,7 @@ if sys.version_info[:2] == (3, 8):
     )
 
 elif sys.version_info[:2] == (3, 9):
-    from typing import (
+    from typing import (  # type: ignore[attr-defined,unused-ignore]
         TYPE_CHECKING,
         TypeVar,
         _CallableGenericAlias,
@@ -146,11 +146,7 @@ elif sys.version_info[:2] == (3, 9):
     if TYPE_CHECKING:
         from typing import Any
 
-    class PEP604:
-        def __or__(self, other: Any) -> Any:
-            return typing.Union[self, other]
-
-    class PEP604GenericAlias(_GenericAlias, PEP604, _root=True):
+    class PEP604GenericAlias(_GenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
             return PEP604GenericAlias(
                 self.__origin__,
@@ -159,7 +155,7 @@ elif sys.version_info[:2] == (3, 9):
                 inst=self._inst,
             )
 
-    class _PEP604SpecialGenericAlias(_SpecialGenericAlias, PEP604, _root=True):
+    class _PEP604SpecialGenericAlias(_SpecialGenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
             return PEP604GenericAlias(
                 self.__origin__,
@@ -168,10 +164,10 @@ elif sys.version_info[:2] == (3, 9):
                 inst=self._inst,
             )
 
-    class _PEP604CallableGenericAlias(_CallableGenericAlias, PEP604, _root=True):
+    class _PEP604CallableGenericAlias(_CallableGenericAlias, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         pass
 
-    class _PEP604CallableType(_CallableType, PEP604, _root=True):
+    class _PEP604CallableType(_CallableType, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
             return _PEP604CallableGenericAlias(
                 self.__origin__,
@@ -180,7 +176,7 @@ elif sys.version_info[:2] == (3, 9):
                 inst=self._inst,
             )
 
-    class _PEP604TupleType(_TupleType, PEP604, _root=True):
+    class _PEP604TupleType(_TupleType, PEP604, _root=True):  # type: ignore[call-arg,misc,unused-ignore]
         def copy_with(self, params: Any) -> Any:
             return PEP604GenericAlias(
                 self.__origin__,
@@ -203,7 +199,7 @@ elif sys.version_info[:2] == (3, 9):
             collections.abc.Reversible: _alias(collections.abc.Reversible, 1),
             collections.abc.Container: _alias(collections.abc.Container, 1),
             collections.abc.Collection: _alias(collections.abc.Collection, 1),
-            collections.abc.Callable: _PEP604CallableType(collections.abc.Callable, 2),
+            collections.abc.Callable: _PEP604CallableType(collections.abc.Callable, 2),  # type: ignore[dict-item,unused-ignore]
             collections.abc.Set: _alias(collections.abc.Set, 1, name="AbstractSet"),
             collections.abc.MutableSet: _alias(collections.abc.MutableSet, 1),
             collections.abc.Mapping: _alias(collections.abc.Mapping, 2),
