@@ -215,7 +215,7 @@ def find_generics(
             )
 
 
-def generate_ext_script(path: Path = Path("__modern_types__/auto.py")) -> None:
+def generate_ext_script(path: Path = Path("__modern_types__/_auto.py")) -> None:
     type_vars: list[TypeVarInfo] = []
 
     def collect_type_vars(generic: GenericSignature) -> GenericSignature:
