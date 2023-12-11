@@ -74,20 +74,3 @@ for frame_info in inspect.stack():
                 setattr(importer, key, _wrap_get_type_hints)
             if val is _collections_defaultdict:
                 setattr(importer, key, typing.DefaultDict)
-
-
-def patch(ref: str, alias: _GenericAlias, stack_offset: int = 1) -> None:
-    """Patch stdlib generic class with the __modern_types__ backport."""
-    module_name, name = ref.partition(".")[::2]
-    try:
-        module = sys.modules[module_name]
-    except KeyError:
-        msg = f"Module {module_name} must be imported before __modern_types__ patching"
-        raise ValueError(msg) from None
-    old_obj = getattr(module, name)
-    setattr(module, name, alias)
-    frame = inspect.stack()[stack_offset].frame
-    importer = sys.modules[frame.f_globals["__name__"]]
-    for key, val in vars(importer).items():
-        if val is old_obj:
-            setattr(importer, key, alias)

@@ -44,6 +44,7 @@ mkdocs-material = ">=8.2,<10.0.0"
 mkdocstrings = { version = ">=0.19.0", extras = ["python"] }
 
 [tool.poe.tasks]
+generate = "scripts/generate_ext.py"
 test = "pytest -v"
 lint = "ruff check ."
 reanswer = "scripts/skeleton.sh reanswer"
@@ -110,6 +111,10 @@ ignore = [
     # Description: Line contains TODO, consider resolving the issue
     # Rationale: Not appropriate for the project.
     "FIX002",
+
+    # Description: Line too long
+    # Rationale: Can't overcome this in __modern_types__.ext where the code is generated
+    "E501",
 ]
 
 [tool.mypy]
