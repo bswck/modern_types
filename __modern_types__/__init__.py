@@ -21,7 +21,7 @@ __all__ = (
     # "PEP604",
 )
 
-if sys.version_info[:2] <= (3, 9):
+if sys.version_info[:2] < (3, 10):
 
     class PEP604:
         """PEP 604 backport."""
