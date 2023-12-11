@@ -4,7 +4,7 @@
 
 [tool.poetry]
 name = "modern_types"
-version = "1.0.6"
+version = "1.0.7"
 description = "PEP 585 + PEP 604 backports."
 authors = ["bswck <bswck.dev@gmail.com>"]
 license = "MIT"

@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v1.0.7](https://github.com/bswck/modern_types/tree/v1.0.7) (2023-12-11)
+
+
+### Fixed
+
+- Now works with [pydantic](https://pydantic.dev) which doesn't use `typing.get_type_hints`, but its own version that calls `typing._eval_type`.
+
+
 ## [v1.0.6](https://github.com/bswck/modern_types/tree/v1.0.6) (2023-12-11)
 
 
