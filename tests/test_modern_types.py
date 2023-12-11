@@ -1,11 +1,20 @@
 from __future__ import annotations
 
+import importlib
+import re
 import sys
+import warnings
 from collections import defaultdict
 from typing import DefaultDict, Dict, FrozenSet, List, Set, Tuple, Union, get_type_hints
 from typing import TypeVar
 
-from __modern_types__ import patch
+import pytest
+
+warnings.simplefilter("ignore", DeprecationWarning)
+import __modern_types__
+from __modern_types__ import _WARNING_3_10, patch
+
+warnings.simplefilter("default", DeprecationWarning)
 
 class Foo:
     a: dict[str, int]
@@ -53,6 +62,6 @@ elif _PYTHON_VERSION == (3, 9):
 else:
     # Handling 3.10+ versions is intended to ensure that the library
     # continues to work with future Python versions.
-    # TODO(bswck): Raise a warning when running on Python 3.10+.
-    def test_dummy() -> None:
-        pass
+    def test_warning() -> None:
+        with pytest.warns(DeprecationWarning, match=re.escape(_WARNING_3_10)):
+            importlib.reload(__modern_types__)

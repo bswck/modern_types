@@ -22,6 +22,7 @@ __all__ = (
 )
 
 _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
+_WARNING_3_10 = "You do not need to import __modern_types__ on Python >=3.10."
 
 if _PYTHON_VERSION < (3, 10):
 
@@ -91,8 +92,4 @@ if _PYTHON_VERSION < (3, 10):
 else:
     import warnings
 
-    warnings.warn(
-        "You do not need to import __modern_types__ on Python >=3.10.",
-        category=DeprecationWarning,
-        stacklevel=2,
-    )
+    warnings.warn(_WARNING_3_10, category=DeprecationWarning, stacklevel=-1)
