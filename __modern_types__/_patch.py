@@ -12,7 +12,7 @@ PATCH_STACK_OFFSET = ContextVar("PATCH_STACK_OFFSET", default=1)
 
 def patch(
     ref: str,
-    type_vars: tuple[object, ...],
+    type_vars: object | tuple[object, ...],
     stack_offset: int | None = None,
     *,
     noop_ok: bool = False,
