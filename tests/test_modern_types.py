@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-
-from typing import DefaultDict, Dict, List, Set, Tuple, FrozenSet, Union, get_type_hints
+from typing import DefaultDict, Dict, FrozenSet, List, Set, Tuple, Union, get_type_hints
 
 import __modern_types__
 
