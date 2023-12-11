@@ -60,24 +60,26 @@ if _PYTHON_VERSION < (3, 10):
         "type": typing.Type,
     }
 
-    _typing_get_type_hints = typing.get_type_hints
+    _typing_eval_type = typing._eval_type  # noqa: SLF001
 
-    def _wrap_get_type_hints(
+    def _wrap_eval_type(
         obj: typing.Any,
         globalns: dict[str, typing.Any] | None = None,
         localns: dict[str, typing.Any] | None = None,
+        recursive_guard: typing.Any = None,
     ) -> dict[str, typing.Any]:
-        """PEP 585 backport."""
-        return _typing_get_type_hints(
+        """PEP 585 & PEP 604 backport."""
+        return _typing_eval_type(
             obj,
             {**builtin_scope_overrides, **(globalns or {})},
             localns,
+            recursive_guard or frozenset(),
         )
 
     _collections_defaultdict = collections.defaultdict
     collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
 
-    typing.get_type_hints = typing.cast(typing.Any, _wrap_get_type_hints)
+    typing._eval_type = typing.cast(typing.Any, _wrap_eval_type)  # noqa: SLF001
 
     # We are very kind and we will fixup `get_type_hints` for all modules that import us.
     # To overcome this, make a reference that wraps `get_type_hints` in some other object.
@@ -88,8 +90,8 @@ if _PYTHON_VERSION < (3, 10):
             stack_offset = offset
             importer = sys.modules[frame_info.frame.f_globals["__name__"]]
             for key, val in vars(importer).items():
-                if val is _typing_get_type_hints:
-                    setattr(importer, key, _wrap_get_type_hints)
+                if val is _typing_eval_type:
+                    setattr(importer, key, _wrap_eval_type)
                 if val is _collections_defaultdict:
                     setattr(importer, key, typing.DefaultDict)
 
