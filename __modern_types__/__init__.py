@@ -16,9 +16,9 @@ from typing import _GenericAlias  # type: ignore[attr-defined]
 from __modern_types__._patch import patch
 
 __all__ = (
-    # "builtin_scope_overrides",
     "patch",
-    # "PEP604",
+    # "builtin_scope_overrides", ???
+    # "PEP604", ???
 )
 
 if sys.version_info[:2] < (3, 10):
@@ -84,3 +84,11 @@ if sys.version_info[:2] < (3, 10):
                     setattr(importer, key, _wrap_get_type_hints)
                 if val is _collections_defaultdict:
                     setattr(importer, key, typing.DefaultDict)
+else:
+    import warnings
+
+    warnings.warn(
+        "You do not need to import __modern_types__ on Python >=3.10.",
+        category=DeprecationWarning,
+        stacklevel=2,
+    )
