@@ -25,7 +25,6 @@ import sys
 import tempfile
 from pathlib import Path
 
-
 _LOGGER = logging.getLogger("release")
 _EDITOR = os.environ.get("EDITOR", "vim")
 

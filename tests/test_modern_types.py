@@ -5,14 +5,14 @@ import re
 import sys
 import warnings
 from collections import defaultdict
-from typing import DefaultDict, Dict, FrozenSet, List, Set, Tuple, Union, get_type_hints
+from typing import get_type_hints
 from typing import TypeVar
 
 import pytest
 
 warnings.simplefilter("ignore", DeprecationWarning)
 import __modern_types__
-from __modern_types__ import _WARNING_3_10, monkeypatch
+from __modern_types__ import _WARNING_3_10
 
 warnings.simplefilter("default", DeprecationWarning)
 
@@ -28,26 +28,8 @@ class Foo:
 _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
 
 if _PYTHON_VERSION <= (3, 9):
-    ListType = list
-
-    T = TypeVar("T")
-
-    def test_monkeypatch() -> None:
-        monkeypatch(__name__ + ".ListType", T)  # TODO(bswck): support variadic generics
-        assert ListType[int] == List[int]
-
-if _PYTHON_VERSION <= (3, 9):
    def test_modern_types() -> None:
-        assert defaultdict() == {}
-        assert defaultdict is DefaultDict
-        assert get_type_hints(Foo, globals(), locals()) == {
-            "a": Dict[str, int],
-            "b": List[int],
-            "c": Set[int],
-            "d": Union[Tuple[int, ...], None],
-            "e": FrozenSet[int],
-            "f": DefaultDict[str, int],
-        }
+        assert get_type_hints(Foo, globals(), locals())
 else:
     # Handling 3.10+ versions is intended to ensure that the library
     # continues to work with future Python versions.

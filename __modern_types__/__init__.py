@@ -9,98 +9,70 @@ deferred type evaluation backward compatibility.
 """
 from __future__ import annotations
 
-import collections
-import inspect
+import ast
+import builtins
 import sys
 import typing
-from typing import _GenericAlias  # type: ignore[attr-defined]
 
-from __modern_types__._monkeypatch import MONKEYPATCH_STACK_OFFSET, monkeypatch
+from __modern_types__._registry import PEP604GenericAlias, register, registry
 
 __all__ = (
-    "monkeypatch",
+    "register",
+    "registry",
+    "PEP604GenericAlias",
     # "AliasBase"?
     # "builtin_scope_overrides"?
 )
+
 
 _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
 _WARNING_3_10 = "You do not need to import __modern_types__ on Python >=3.10."
 
 if _PYTHON_VERSION < (3, 10):
+    _builtin_evaluate = typing.ForwardRef._evaluate  # noqa: SLF001
 
-    class AliasBase:
-        """PEP 604 backport. Subclass check fix."""
-
-        __origin__: typing.Any
-
-        def __subclasscheck__(self, cls: typing.Any) -> typing.Any:
-            return self.__origin__.__subclasscheck__(cls)
-
-        def __or__(self, other: type[typing.Any]) -> typing.Any:
-            """Implement | operator for X | Y type syntax."""
-            return typing.Union[self, other]  # pragma: no cover; coverage bug?
-
-    _GenericAlias.__bases__ += (AliasBase,)
-    _GenericAlias.__subclasscheck__ = AliasBase.__subclasscheck__
-
-    for _g in (
-        typing.Tuple,
-        typing.List,
-        typing.Set,
-        typing.FrozenSet,
-        typing.Dict,
-        typing.Type,
-    ):
-        _g._inst = True  # type: ignore[attr-defined]  # noqa: SLF001
-
-    builtin_scope_overrides = {
-        "tuple": typing.Tuple,
-        "list": typing.List,
-        "set": typing.Set,
-        "frozenset": typing.FrozenSet,
-        "dict": typing.Dict,
-        "type": typing.Type,
-    }
-
-    _typing_eval_type = typing._eval_type  # type: ignore[attr-defined] #  noqa: SLF001
-
-    def _wrap_eval_type(
-        obj: typing.Any,
+    def _wrap_evaluate(
+        self: typing.ForwardRef,
         globalns: dict[str, typing.Any] | None = None,
         localns: dict[str, typing.Any] | None = None,
         recursive_guard: typing.Any = None,
     ) -> typing.Any:
         """PEP 585 & PEP 604 backport."""
-        return _typing_eval_type(
-            obj,
-            {**builtin_scope_overrides, **(globalns or {})},
+        tree = ast.parse(self.__forward_arg__, mode="eval")
+
+        # Copy the namespaces to ensure we don't modify the caller's namespaces.
+        globalns = (globalns or {}).copy()
+        localns = (localns or {}).copy()
+        builtin_ns = vars(builtins)
+        missing = object()
+
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Name):
+                name = node.id
+                scope = localns
+                cls = localns.get(name, missing)
+                if cls is missing:
+                    cls = globalns.get(name, missing)
+                    scope = globalns
+                if cls is missing:
+                    cls = builtin_ns.get(name, missing)
+                if cls is missing:
+                    continue  # this will be a NameError, skip
+                replacement = registry.get(cls, missing)
+                if replacement is missing:
+                    continue  # not a registered type, skip
+                scope[name] = replacement
+        return _builtin_evaluate(
+            self,
+            globalns,
             localns,
-            *(() if _PYTHON_VERSION == (3, 8) else (recursive_guard or frozenset(),)),
+            *(() if _PYTHON_VERSION == (3, 8) else (recursive_guard,)),
         )
 
-    _collections_defaultdict = collections.defaultdict
-    collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
-
-    typing._eval_type = typing.cast(typing.Any, _wrap_eval_type)  # type: ignore[attr-defined] #  noqa: SLF001
-
-    # We are very kind and we will fixup `get_type_hints` for all modules that import us.
-    # To overcome this, make a reference that wraps `get_type_hints` in some other object.
-    stack_offset = 1
-
-    for offset, frame_info in enumerate(inspect.stack()):
-        if __name__ in "".join(frame_info.code_context or ()):
-            stack_offset = offset
-            importer = sys.modules[frame_info.frame.f_globals["__name__"]]
-            for key, val in vars(importer).items():
-                if val is _typing_eval_type:
-                    setattr(importer, key, _wrap_eval_type)
-                if val is _collections_defaultdict:
-                    setattr(importer, key, typing.DefaultDict)
-
-    MONKEYPATCH_STACK_OFFSET.set(stack_offset)
+    typing.ForwardRef._evaluate = typing.cast(typing.Any, _wrap_evaluate)  # type: ignore[attr-defined] #  noqa: SLF001
 
     # Automatically patch other modules
-    import __modern_types__._auto  # noqa: F401
+    import __modern_types__._typeshed  # noqa: F401
 else:
     import warnings
 

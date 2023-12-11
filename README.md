@@ -62,7 +62,9 @@ Importing `__modern_types__` will make all `typing._eval_type`-dependent parts o
 > You should remember putting `from __future__ import annotations` at the top of your modules everywhere you
 > want to leverage `__modern_types__`.
 
-Simply import `__modern_types__` in your code, and it will override the default global namespace of `typing._eval_type`.
+Simply import `__modern_types__` in your code, and it will make `typing.ForwardRef` instances go through the
+type hint expression AST to try to tweak the copy of the passed global/local namespace
+to use `typing.GenericAlias`s that support `[]` and `|` operators at runtime.
 
 And now you can use modern types everywhere in your code and the following replacements will be applied without overwriting your parameters:
 
@@ -77,9 +79,7 @@ And now you can use modern types everywhere in your code and the following repla
 | `X \| Y` | `typing.Union[X, Y]` | **>=3.10** | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
-> Some optional replacements will also be performed if possible, according to those listed in the [`__modern_types__._auto`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_auto.py) source code.
-
-`__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
+> Some optional replacements will also be registered if possible, according to those listed in the [`__modern_types__._auto`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_auto.py) source code.
 
 ## ProTip: How to subclass built-in generic classes in Python 3.8?
 Supposing you are subclassing `dict`, you could write either
@@ -117,11 +117,9 @@ so that `YourDictSubclass[str, int]`, for instance, could be used as an evaluabl
 If you want an API that simplifies this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
 
 # Can `__modern_types__` be used in production?
-Yes. It shouldn't break most of the existing codebases, despite the monkeypatching.
-
-The library simply overrides the default global namespace of `typing.get_type_hints` and tries to re-assign name-to-object references of un-`[]`-able and un-`|`-able types in relevant modules to valid generic aliases from the typing module, such as `typing.Dict[KT, VT]`.
-
-If some keys that `__modern_types__` would supply to `typing.get_type_hints` global namespace are present, they are used instead of the `__modern_types__` ones.
+Yes. It shouldn't break most any existing codebase it only uses AST and overwrites `typing.ForwardRef._evaluate`.
+`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and such.
+Only one safe monkeypatch—huge benefits.
 
 # Installation
 If you want to…
