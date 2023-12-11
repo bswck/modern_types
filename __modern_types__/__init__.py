@@ -89,7 +89,7 @@ if _PYTHON_VERSION < (3, 10):
     PATCH_STACK_OFFSET.set(stack_offset)
 
     # Automatically patch other modules
-    import __modern_types__.ext  # noqa: F401
+    import __modern_types__._auto  # noqa: F401
 else:
     import warnings
 
