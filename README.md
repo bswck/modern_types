@@ -59,7 +59,7 @@ And now you can use modern types everywhere in your code and the following repla
 | `X \| Y` | `typing.Union[X, Y]` | **>=3.10** | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
 
 > [!Note]
-> Some optional replacements will also be performed if possible, according to [`__modern_types__.ext`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/ext.py)
+> Some optional replacements will also be performed if possible, according to those listed in the [`__modern_types__.ext`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/ext.py) source code.
 
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
