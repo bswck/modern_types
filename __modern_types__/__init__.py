@@ -56,7 +56,7 @@ def _wrap_get_type_hints(
 
 typing.get_type_hints = typing.cast(typing.Any, _wrap_get_type_hints)
 
-# We are very kind and we will fixup get_type_hints for all modules that import us.
+# We are very kind and we will fixup `get_type_hints` for all modules that import us.
 # To overcome this, make a reference that wraps `get_type_hints` in some other object.
 for frame_info in inspect.stack():
     if __name__ in "".join(frame_info.code_context or ()):
