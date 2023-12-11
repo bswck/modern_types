@@ -18,6 +18,7 @@ Hence, the targeted Python versions are 3.8 and 3.9.
 Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
 which might happen in pydantic models for example.
 
+In Python 3.8, the following code
 ```py
 from __future__ import annotations
 from collections import defaultdict
