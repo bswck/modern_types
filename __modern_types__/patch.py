@@ -15,14 +15,14 @@ def patch(
     type_vars: list[TypeVar],
     stack_offset: int = 1,
     *,
-    unimported_cancel: bool = True,
+    noop_ok: bool = False,
 ) -> None:
     """Patch stdlib generic class with the __modern_types__ backport."""
     module_name, name = ref.partition(".")[::2]
     try:
         module = sys.modules[module_name]
     except KeyError:
-        if unimported_cancel:
+        if noop_ok:
             return
         msg = f"Module {module_name} must be imported before __modern_types__ patching"
         raise ValueError(msg) from None

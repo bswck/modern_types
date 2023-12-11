@@ -104,7 +104,7 @@ class GenericSignature:
         return (
             f"# Generated from `{self.location.match.group(0)}`\n"
             f'# @ {self.where}\npatch("{self.ref}", '
-            f"{self.param_tuple_string}, unimported_cancel=True)\n"
+            f"{self.param_tuple_string}, noop_ok=True)\n"
         )
 
     def __str__(self) -> str:
