@@ -77,8 +77,7 @@ Supposing you are subclassing `dict`, you could write either
 ```py
 from __future__ import annotations
 
-from functools import partial
-from typing import Dict
+from typing import Dict, Generic
 
 KT = TypeVar("KT")
 VT = TypeVar("VT")
