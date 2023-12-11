@@ -12,7 +12,7 @@
 Hence, the targeted Python versions are 3.8 and 3.9.
 
 > [!Note]
-> The current version does not support variadic generics (`typing_extensions.TypeVarTuple`). They are to come in 2.0.0.
+> The current version of `__modern_types__` does not support variadic generics (`typing_extensions.TypeVarTuple`). They are to come in 2.0.0.
 
 # What does it do?
 Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
