@@ -54,7 +54,7 @@ def _get_type_hints(
     return _typing_get_type_hints(obj, {**ns, **(globalns or {})}, localns)
 
 
-typing.get_type_hints = _get_type_hints
+typing.get_type_hints = typing.cast(typing.Any, _get_type_hints)
 
 # We are very kind and we will fixup get_type_hints for all modules that import us.
 # To overcome this, make a reference that wraps `get_type_hints` in some other object.
