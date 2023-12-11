@@ -215,7 +215,9 @@ def find_generics(
             )
 
 
-def generate_ext_script(path: Path = Path("__modern_types__/_auto.py")) -> None:
+def generate_automatic_monkeypatches(
+    path: Path = Path("__modern_types__/_auto.py"),
+) -> None:
     type_vars: list[TypeVarInfo] = []
 
     def collect_type_vars(generic: GenericSignature) -> GenericSignature:
@@ -248,4 +250,5 @@ def generate_ext_script(path: Path = Path("__modern_types__/_auto.py")) -> None:
 
 
 if __name__ == "__main__":
-    copy_context().run(generate_ext_script)
+    copy_context().run(generate_automatic_monkeypatches)
+
