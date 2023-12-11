@@ -7,10 +7,10 @@ import sys
 from contextvars import ContextVar
 from typing import _GenericAlias  # type: ignore[attr-defined]
 
-PATCH_STACK_OFFSET = ContextVar("PATCH_STACK_OFFSET", default=1)
+MONKEYPATCH_STACK_OFFSET = ContextVar("MONKEYPATCH_STACK_OFFSET", default=1)
 
 
-def patch(
+def monkeypatch(
     ref: str,
     type_vars: object | tuple[object, ...],
     stack_offset: int | None = None,
@@ -37,7 +37,7 @@ def patch(
     setattr(module, name, alias)
 
     if stack_offset is None:
-        stack_offset = PATCH_STACK_OFFSET.get()
+        stack_offset = MONKEYPATCH_STACK_OFFSET.get()
     frame = inspect.stack()[stack_offset].frame
 
     importer = sys.modules[frame.f_globals["__name__"]]

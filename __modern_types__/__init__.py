@@ -13,10 +13,10 @@ import sys
 import typing
 from typing import _GenericAlias  # type: ignore[attr-defined]
 
-from __modern_types__._patch import PATCH_STACK_OFFSET, patch
+from __modern_types__._monkeypatch import MONKEYPATCH_STACK_OFFSET, monkeypatch
 
 __all__ = (
-    "patch",
+    "monkeypatch",
     # "AliasBase"?
     # "builtin_scope_overrides"?
 )
@@ -31,7 +31,7 @@ if _PYTHON_VERSION < (3, 10):
 
         __origin__: typing.Any
 
-        def __subclasscheck__(self, cls: typing.Any) -> bool:
+        def __subclasscheck__(self, cls: typing.Any) -> typing.Any:
             return self.__origin__.__subclasscheck__(cls)
 
         def __or__(self, other: type[typing.Any]) -> typing.Any:
@@ -94,7 +94,7 @@ if _PYTHON_VERSION < (3, 10):
                 if _PYTHON_VERSION == (3, 8) and val is _collections_defaultdict:
                     setattr(importer, key, typing.DefaultDict)
 
-    PATCH_STACK_OFFSET.set(stack_offset)
+    MONKEYPATCH_STACK_OFFSET.set(stack_offset)
 
     # Automatically patch other modules
     import __modern_types__._auto  # noqa: F401

@@ -43,6 +43,11 @@ gives:
  "f": typing.DefaultDict[str, int]}
 ```
 
+# Use case
+Keep your codebase up-to-date by speeding up migrating to modern types, even if you support Python versions >=3.8,<=3.10.
+Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
+Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
+
 # How to use?
 Simply import `__modern_types__` in your code, and it will override the default global namespace of `typing.get_type_hints`.
 
@@ -63,13 +68,64 @@ And now you can use modern types everywhere in your code and the following repla
 
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
-# Use case
-Keep your codebase up-to-date by speeding up migrating to modern types, even if you support Python versions >=3.8,<=3.10.
-Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
-Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
+## Advanced monkeypatching
+You can use `__modern_types__.monkeypatch` to monkeypatch `typing.get_type_hints` in a more advanced way.
+Assuming your unsubscriptable generic class is `yourproject.module.SomeMapping[KT, VT]`, you could write:
+```py
+# yourproject/_modern_types.py
+from typing import TypeVar
+
+from __modern_types__ import monkeypatch
+
+
+KT = TypeVar("KT")
+VT = TypeVar("VT")
+
+def do_monkeypatch() -> None:
+    monkeypatch("yourproject.module.SomeMapping", (KT, VT), stack_offset=2)
+```
+```py
+# yourproject/module.py
+from yourproject._modern_types import do_monkeypatch
+
+
+class SomeMapping(dict):
+    pass
+
+
+do_monkeypatch()
+```
+will reassign `yourproject.module.SomeMapping` to be `typing._GenericAlias(module.Class, T)`
+ in `yourproject.module`.
+
+And now
+```py
+# yourproject/other_module.py
+from __future__ import annotations
+
+from typing import get_type_hints
+
+from yourproject.module import SomeMapping
+
+
+class AnnotationStore:
+    mapping: SomeMapping[str, int]
+
+
+print(get_type_hints(AnnotationStore, globals(), locals()))
+```
+should output
+```
+{'mapping': SomeMapping[str, int]}
+```
+
+and the user is happy. 😃
 
 # Can `__modern_types__` be used in production?
-Yes. It won't break the existing code despite the monkeypatch. The library simply overrides the default global namespace of `typing.get_type_hints` and tries to re-assign name-to-object references of un-subscriptable and un-orable types in relevant modules.
+Yes. It shouldn't break most of the existing codebases, despite the monkeypatching.
+
+The library simply overrides the default global namespace of `typing.get_type_hints` and tries to re-assign name-to-object references of un-subscriptable and un-orable types in relevant modules to valid generic aliases from the typing module, such as `typing.Dict[KT, VT]`.
+
 If some keys that `__modern_types__` would supply to `typing.get_type_hints` global namespace are present, they are used instead of the `__modern_types__` ones.
 
 # Installation

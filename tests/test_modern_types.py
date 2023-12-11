@@ -12,7 +12,7 @@ import pytest
 
 warnings.simplefilter("ignore", DeprecationWarning)
 import __modern_types__
-from __modern_types__ import _WARNING_3_10, patch
+from __modern_types__ import _WARNING_3_10, monkeypatch
 
 warnings.simplefilter("default", DeprecationWarning)
 
@@ -32,8 +32,8 @@ if _PYTHON_VERSION <= (3, 9):
 
     T = TypeVar("T")
 
-    def test_patch() -> None:
-        patch(__name__ + ".ListType", T)  # TODO(bswck): support variadic generics
+    def test_monkeypatch() -> None:
+        monkeypatch(__name__ + ".ListType", T)  # TODO(bswck): support variadic generics
         assert ListType[int] == List[int]
 
 if _PYTHON_VERSION <= (3, 8):

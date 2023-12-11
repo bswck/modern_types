@@ -38,7 +38,7 @@ from __future__ import annotations
 
 ${imports}
 
-from __modern_types__ import patch
+from __modern_types__ import monkeypatch
 
 # fmt: off
 
@@ -107,7 +107,7 @@ class GenericSignature:
     def patch_call_expr(self) -> str:
         return (
             f"# Generated from `{self.location.match.group(0)}`\n"
-            f'# @ {self.where}\npatch("{self.ref}", '
+            f'# @ {self.where}\nmonkeypatch("{self.ref}", '
             f"{self.param_tuple_string}, noop_ok=True)\n"
         )
 
