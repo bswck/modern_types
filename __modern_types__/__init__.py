@@ -73,7 +73,7 @@ if _PYTHON_VERSION < (3, 10):
             obj,
             {**builtin_scope_overrides, **(globalns or {})},
             localns,
-            *(() if _PYTHON_VERSION == (3, 9) else (recursive_guard or frozenset(),)),
+            *(() if _PYTHON_VERSION == (3, 8) else (recursive_guard or frozenset(),)),
         )
 
     _collections_defaultdict = collections.defaultdict
