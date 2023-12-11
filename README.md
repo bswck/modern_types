@@ -72,8 +72,23 @@ And now you can use modern types everywhere in your code and the following repla
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
 ## ProTip: How to subclass built-in generic classes in Python 3.8?
-Supposing you are subclassing `dict`, you could write:
+Supposing you are subclassing `dict`, you could write either:
 
+```py
+from __future__ import annotations
+
+from functools import partial
+from typing import Dict
+
+KT = TypeVar("KT")
+VT = TypeVar("VT")
+
+
+class YourDictSubclass(Dict[KT, VT], Generic[KT, VT]):
+    pass
+```
+
+or
 ```py
 from __future__ import annotations
 
@@ -88,8 +103,9 @@ VT = TypeVar("VT")
 class YourDictSubclass(dict):
     pass
 ```
+so that `YourDictSubclass[str, int]`, for instance, could be used as an evaluable type annotation.
 
-If you want an API for this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
+If you want an API that simplifies this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
 
 # Can `__modern_types__` be used in production?
 Yes. It shouldn't break most of the existing codebases, despite the monkeypatching.
