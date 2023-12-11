@@ -21,7 +21,9 @@ __all__ = (
     # "PEP604", ???
 )
 
-if sys.version_info[:2] < (3, 10):
+_PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
+
+if _PYTHON_VERSION < (3, 10):
 
     class PEP604:
         """PEP 604 backport."""
@@ -32,7 +34,7 @@ if sys.version_info[:2] < (3, 10):
 
     _GenericAlias.__bases__ += (PEP604,)
 
-    if sys.version_info[:2] == (3, 9):
+    if _PYTHON_VERSION == (3, 9):
         import types
 
         types.GenericAlias = _GenericAlias
@@ -71,7 +73,9 @@ if sys.version_info[:2] < (3, 10):
         )
 
     _collections_defaultdict = collections.defaultdict
-    collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
+    if _PYTHON_VERSION == (3, 8):
+        collections.defaultdict = typing.DefaultDict  # type: ignore[misc]
+
     typing.get_type_hints = typing.cast(typing.Any, _wrap_get_type_hints)
 
     # We are very kind and we will fixup `get_type_hints` for all modules that import us.
@@ -82,7 +86,7 @@ if sys.version_info[:2] < (3, 10):
             for key, val in vars(importer).items():
                 if val is _typing_get_type_hints:
                     setattr(importer, key, _wrap_get_type_hints)
-                if val is _collections_defaultdict:
+                if _PYTHON_VERSION == (3, 8) and val is _collections_defaultdict:
                     setattr(importer, key, typing.DefaultDict)
 else:
     import warnings

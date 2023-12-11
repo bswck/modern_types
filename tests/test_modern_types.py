@@ -16,7 +16,9 @@ class Foo:
     f: defaultdict[str, int]
 
 
-if sys.version_info[:2] <= (3, 9):
+_PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
+
+if _PYTHON_VERSION <= (3, 9):
     ListType = list
 
     T = TypeVar("T")
@@ -25,7 +27,7 @@ if sys.version_info[:2] <= (3, 9):
         patch(__name__ + ".ListType", T)  # TODO(bswck): support variadic generics
         assert ListType[int] == List[int]
 
-if sys.version_info[:2] <= (3, 8):
+if _PYTHON_VERSION <= (3, 8):
    def test_modern_types() -> None:
         assert defaultdict() == {}
         assert defaultdict is DefaultDict
@@ -37,7 +39,7 @@ if sys.version_info[:2] <= (3, 8):
             "e": FrozenSet[int],
             "f": DefaultDict[str, int],
         }
-elif sys.version_info[:2] == (3, 9):
+elif _PYTHON_VERSION == (3, 9):
     def test_modern_types() -> None:
         assert defaultdict is not DefaultDict  # replacement was not needed
         assert get_type_hints(Foo, globals(), locals()) == {
