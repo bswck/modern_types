@@ -109,7 +109,7 @@ If you want an API that simplifies this, please [submit an issue](https://github
 # Can `__modern_types__` be used in production?
 Yes. It shouldn't break most of the existing codebases, despite the monkeypatching.
 
-The library simply overrides the default global namespace of `typing.get_type_hints` and tries to re-assign name-to-object references of un-subscriptable and un-orable types in relevant modules to valid generic aliases from the typing module, such as `typing.Dict[KT, VT]`.
+The library simply overrides the default global namespace of `typing.get_type_hints` and tries to re-assign name-to-object references of un-`[]`-able and un-`|`-able types in relevant modules to valid generic aliases from the typing module, such as `typing.Dict[KT, VT]`.
 
 If some keys that `__modern_types__` would supply to `typing.get_type_hints` global namespace are present, they are used instead of the `__modern_types__` ones.
 
