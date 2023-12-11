@@ -10,8 +10,8 @@ import string
 import subprocess
 import sys
 from contextvars import ContextVar, copy_context
-from functools import partial
 from dataclasses import dataclass, field
+from functools import partial
 from itertools import chain
 from pathlib import Path
 

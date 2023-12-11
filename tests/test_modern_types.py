@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from collections import defaultdict
 from typing import DefaultDict, Dict, FrozenSet, List, Set, Tuple, Union, get_type_hints
+from typing import TypeVar
 
-import __modern_types__
+from __modern_types__ import patch
 
 
 def test_modern_types() -> None:
@@ -25,3 +26,12 @@ def test_modern_types() -> None:
         "e": FrozenSet[int],
         "f": DefaultDict[str, int],
     }
+
+
+ListType = list
+
+T = TypeVar("T")
+
+def test_patch() -> None:
+    patch(__name__ + ".ListType", T)  # TODO(bswck): support TypeVarTuples
+    assert ListType[int] == List[int]
