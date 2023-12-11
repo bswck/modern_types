@@ -19,8 +19,6 @@ from __modern_types__._registry import register, registry
 __all__ = (
     "register",
     "registry",
-    # "AliasBase"?
-    # "builtin_scope_overrides"?
 )
 
 
