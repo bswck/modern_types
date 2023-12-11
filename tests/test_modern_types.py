@@ -1,6 +1,4 @@
 import __modern_types__
 
-int
-str
-float
-list[str]
+def test_modern_types() -> None:
+    pass
