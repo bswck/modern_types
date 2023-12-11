@@ -55,10 +55,8 @@ Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`
 Importing `__modern_types__` will make all `typing._eval_type`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
 
 # Is `__modern_types__` safe to use in production?
-Yes. It shouldn't break most any existing codebase it only uses AST and overwrites `typing.ForwardRef._evaluate`.
-`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and such.
-
-Only one, safe monkeypatch and huge benefits.
+Yes. It shouldn't break any existing codebase. It only uses AST and overwrites `typing.ForwardRef._evaluate`.
+`__modern_types__` does not interact with the caller's namespaces, does not mutate built-in classes and does not do any other dubious things.
 
 # How to use?
 > [!Warning]
