@@ -13,6 +13,14 @@ import sys
 import typing
 from typing import _GenericAlias  # type: ignore[attr-defined]
 
+from __modern_types__._patch import patch
+
+__all__ = (
+    "builtin_scope_overrides",
+    "patch",
+    "PEP604",
+)
+
 
 class PEP604:
     """PEP 604 backport."""
