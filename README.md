@@ -11,9 +11,6 @@
 `__modern_types__` aims to provide [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backward compatibility for Python <=3.10 deferred type evaluation.
 Hence, the targeted Python versions are 3.8 and 3.9.
 
-> [!Note]
-> The current version of `__modern_types__` does not support variadic generics (`typing_extensions.TypeVarTuple`). They are to come in 2.0.0.
-
 # What does it do?
 Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
 which might happen in pydantic models for example.
@@ -48,15 +45,20 @@ gives:
 ```
 
 # Use case
-Keep your codebase up-to-date by speeding up migrating to modern types, even if you support Python versions >=3.8.
+Keep your codebase up-to-date by speeding up migration to modern types, even if you support Python versions >=3.8.
+
 Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
+
 Importing `__modern_types__` will make all `typing.get_type_hints`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
 
 # How to use?
 > [!Warning]
 > Remember that the library does not change the built-in scope at runtime!
+>
 > So `dict[str, int]` won't render at runtime, but `typing.Dict[str, int]` will.
+>
 > `__modern_types__` makes it possible to evaluate `dict[str, int]` only through the `typing.get_type_hints` function.
+>
 > You should remember putting `from __future__ import annotations` at the top of your modules everywhere you
 > want to leverage `__modern_types__`.
 
