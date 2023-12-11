@@ -45,7 +45,7 @@ mkdocs-material = ">=8.2,<10.0.0"
 mkdocstrings = { version = ">=0.19.0", extras = ["python"] }
 
 [tool.poe.tasks]
-generate = "scripts/generate_ext.py"
+generate = "scripts/generate_auto.py"
 test = "pytest -v"
 lint = "ruff check ."
 reanswer = "scripts/skeleton.sh reanswer"
