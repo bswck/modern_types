@@ -58,6 +58,9 @@ And now you can use modern types everywhere in your code and the following repla
 | `collections.defaultdict[int]` | `typing.DefaultDict[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `X \| Y` | `typing.Union[X, Y]` | >=3.9 | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
 
+> [!Note]
+> Some optional replacements will also be performed if possible, according to [`__modern_types__.ext`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/ext.py)
+
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
 # Use case
