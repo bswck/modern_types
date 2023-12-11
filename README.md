@@ -16,8 +16,8 @@ which might happen in pydantic models for example.
 
 ```py
 from __future__ import annotations
-from pprint import pprint
 from collections import defaultdict
+from pprint import pprint
 from typing import get_type_hints
 
 import __modern_types__
