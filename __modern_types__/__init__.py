@@ -21,7 +21,7 @@ __all__ = (
     # "PEP604",
 )
 
-if sys.version_info <= (3, 9):
+if sys.version_info[:2] <= (3, 9):
 
     class PEP604:
         """PEP 604 backport."""
@@ -31,6 +31,11 @@ if sys.version_info <= (3, 9):
             return typing.Union[self, other]  # pragma: no cover; coverage bug?
 
     _GenericAlias.__bases__ += (PEP604,)
+
+    if sys.version_info[:2] == (3, 9):
+        import types
+
+        types.GenericAlias = _GenericAlias
 
     for _g in (
         typing.Tuple,
