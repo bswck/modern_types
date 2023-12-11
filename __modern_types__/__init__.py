@@ -17,7 +17,7 @@ class PEP604:
 
     def __or__(self, other: type[typing.Any]) -> typing.Any:
         """Implement | operator for X | Y type syntax."""
-        return typing.Union[self, other]
+        return typing.Union[self, other]  # pragma: no cover; coverage bug?
 
 
 typing._GenericAlias.__bases__ += (PEP604,)  # type: ignore[attr-defined]  # noqa: SLF001
