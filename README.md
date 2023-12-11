@@ -9,6 +9,7 @@
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 [PEP 585](https://peps.python.org/pep-0585/) + [PEP 604](https://peps.python.org/pep-0604/) backports for Python <=3.10 deferred type evaluation backward compatibility.
+Hence, the targeted Python versions are 3.8 and 3.9.
 
 # What does it do?
 Prevents type errors in evaluating PEP 585 and PEP 604 type annotations for Python 3.8 and 3.9,
@@ -48,14 +49,14 @@ Simply import `__modern_types__` in your code, and it will override the default 
 And now you can use modern types everywhere in your code and the following replacements will be applied without overwriting your parameters:
 
 | Old type | New type | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... | Backports PEP |
-| --- | --- | --- | --- |
+|:---:|:---:|:---:|:---:|:---:|
 | `dict[KT, VT]` | `typing.Dict[str, int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `list[VT]` | `typing.List[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `set[int]` | `typing.Set[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `tuple[int, ...]` | `typing.Tuple[int, ...]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `frozenset[int]` | `typing.FrozenSet[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
 | `collections.defaultdict[int]` | `typing.DefaultDict[int]` | >=3.10 | >=3.8 | [PEP 585](https://peps.python.org/pep-0585/) |
-| `X | Y` | `typing.Union[X, Y]` | >=3.9 | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
+| `X \| Y` | `typing.Union[X, Y]` | >=3.9 | >=3.8 | [PEP 604](https://peps.python.org/pep-0604/) |
 
 `__modern_types__` additionally makes sure that generic aliases above are instantiable, which isn't the default behavior.
 
