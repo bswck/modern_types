@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v1.0.6](https://github.com/bswck/modern_types/tree/v1.0.6) (2023-12-11)
+
+
+### Fixed
+
+- `collections.defaultdict[int, str] | None` was impossible, because it was a 3.9 `types.GenericAlias` without `X | Y` union type syntax support.
+
+
 ## [v1.0.5](https://github.com/bswck/modern_types/tree/v1.0.5) (2023-12-11)
 
 
