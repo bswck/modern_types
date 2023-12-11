@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v1.0.4](https://github.com/bswck/modern_types/tree/v1.0.4) (2023-12-11)
+
+
+### Fixed
+
+- Documentation.
+
+
 ## [v1.0.3](https://github.com/bswck/modern_types/tree/v1.0.3) (2023-12-11)
 
 
