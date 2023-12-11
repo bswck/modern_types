@@ -5,7 +5,7 @@ import re
 import sys
 import warnings
 from collections import defaultdict
-from typing import get_type_hints
+from typing import DefaultDict, Dict, FrozenSet, List, Set, Tuple, Union, get_type_hints
 from typing import TypeVar
 
 import pytest
@@ -29,7 +29,14 @@ _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
 
 if _PYTHON_VERSION <= (3, 9):
    def test_modern_types() -> None:
-        assert get_type_hints(Foo, globals(), locals())
+        assert get_type_hints(Foo, globals(), locals()) == {
+            "a": Dict[str, int],
+            "b": List[int],
+            "c": Set[int],
+            "d": Union[Tuple[int, ...], None],
+            "e": FrozenSet[int],
+            "f": DefaultDict[str, int],
+        }
 else:
     # Handling 3.10+ versions is intended to ensure that the library
     # continues to work with future Python versions.
