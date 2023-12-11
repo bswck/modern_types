@@ -366,300 +366,300 @@ patch("os.__init__.DirEntry", (AnyStr,))
 
 # Generated from `class AsyncResult(AbstractLinkable, Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/event.pyi:33
-patch("gevent.gevent.event.AsyncResult", (_T,))
+patch("gevent.event.AsyncResult", (_T,))
 
 # Generated from `class BaseServer(Generic[_P]):`
 # @ typeshed/stubs/gevent/gevent/baseserver.pyi:18
-patch("gevent.gevent.baseserver.BaseServer", (_P,))
+patch("gevent.baseserver.BaseServer", (_P,))
 
 # Generated from `class Queue(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/queue.pyi:16
-patch("gevent.gevent.queue.Queue", (_T,))
+patch("gevent.queue.Queue", (_T,))
 
 # Generated from `class Channel(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/queue.pyi:68
-patch("gevent.gevent.queue.Channel", (_T,))
+patch("gevent.queue.Channel", (_T,))
 
 # Generated from `class OpenDescriptor(Generic[_IOT]):`
 # @ typeshed/stubs/gevent/gevent/_fileobjectcommon.pyi:38
-patch("gevent.gevent._fileobjectcommon.OpenDescriptor", (_IOT,))
+patch("gevent._fileobjectcommon.OpenDescriptor", (_IOT,))
 
 # Generated from `class FileObjectBase(Generic[_IOT, AnyStr]):`
 # @ typeshed/stubs/gevent/gevent/_fileobjectcommon.pyi:82
-patch("gevent.gevent._fileobjectcommon.FileObjectBase", (_IOT, AnyStr))
+patch("gevent._fileobjectcommon.FileObjectBase", (_IOT, AnyStr))
 
 # Generated from `class Waiter(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_waiter.pyi:23
-patch("gevent.gevent._waiter.Waiter", (_T,))
+patch("gevent._waiter.Waiter", (_T,))
 
 # Generated from `class ThreadResult(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/threadpool.pyi:39
-patch("gevent.gevent.threadpool.ThreadResult", (_T,))
+patch("gevent.threadpool.ThreadResult", (_T,))
 
 # Generated from `class Greenlet(greenlet.greenlet, Generic[_P, _T]):`
 # @ typeshed/stubs/gevent/gevent/greenlet.pyi:15
-patch("gevent.gevent.greenlet.Greenlet", (_P, _T))
+patch("gevent.greenlet.Greenlet", (_P, _T))
 
 # Generated from `class ImportableSetting(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_config.pyi:76
-patch("gevent.gevent._config.ImportableSetting", (_T,))
+patch("gevent._config.ImportableSetting", (_T,))
 
 # Generated from `class Queue(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_threading.pyi:11
-patch("gevent.gevent._threading.Queue", (_T,))
+patch("gevent._threading.Queue", (_T,))
 
 # Generated from `class Lazy(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_util.pyi:24
-patch("gevent.gevent._util.Lazy", (_T,))
+patch("gevent._util.Lazy", (_T,))
 
 # Generated from `class LazyOnClass(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/_util.pyi:40
-patch("gevent.gevent._util.LazyOnClass", (_T,))
+patch("gevent._util.LazyOnClass", (_T,))
 
 # Generated from `class Result(Generic[_T]):`
 # @ typeshed/stubs/gevent/gevent/resolver/cares.pyi:12
-patch("gevent.gevent.resolver.cares.Result", (_T,))
+patch("gevent.resolver.cares.Result", (_T,))
 
 # Generated from `class BufferedFile(ClosingContextManager, Generic[AnyStr]):`
 # @ typeshed/stubs/paramiko/paramiko/file.pyi:6
-patch("paramiko.paramiko.file.BufferedFile", (AnyStr,))
+patch("paramiko.file.BufferedFile", (AnyStr,))
 
 # Generated from `class BufferedPipe(Generic[AnyStr]):`
 # @ typeshed/stubs/paramiko/paramiko/buffered_pipe.pyi:6
-patch("paramiko.paramiko.buffered_pipe.BufferedPipe", (AnyStr,))
+patch("paramiko.buffered_pipe.BufferedPipe", (AnyStr,))
 
 # Generated from `class Method(Frame, Generic[_M]):`
 # @ typeshed/stubs/pika/pika/frame.pyi:19
-patch("pika.pika.frame.Method", (_M,))
+patch("pika.frame.Method", (_M,))
 
 # Generated from `class ClosableDeferredQueue(DeferredQueue[_T], Generic[_T]):`
 # @ typeshed/stubs/pika/pika/adapters/twisted_connection.pyi:22
-patch("pika.pika.adapters.twisted_connection.ClosableDeferredQueue", (_T,))
+patch("pika.adapters.twisted_connection.ClosableDeferredQueue", (_T,))
 
 # Generated from `class ThresholdCounter(Generic[_T]):`
 # @ typeshed/stubs/boltons/boltons/cacheutils.pyi:82
-patch("boltons.boltons.cacheutils.ThresholdCounter", (_T,))
+patch("boltons.cacheutils.ThresholdCounter", (_T,))
 
 # Generated from `class MinIDMap(Generic[_T]):`
 # @ typeshed/stubs/boltons/boltons/cacheutils.pyi:105
-patch("boltons.boltons.cacheutils.MinIDMap", (_T,))
+patch("boltons.cacheutils.MinIDMap", (_T,))
 
 # Generated from `class QRCode(Generic[GenericImage]):`
 # @ typeshed/stubs/qrcode/qrcode/main.pyi:28
-patch("qrcode.qrcode.main.QRCode", (GenericImage,))
+patch("qrcode.main.QRCode", (GenericImage,))
 
 # Generated from `class SearchResultObject(StripeObject, Generic[_T]):`
 # @ typeshed/stubs/stripe/stripe/api_resources/search_result_object.pyi:9
-patch("stripe.stripe.api_resources.search_result_object.SearchResultObject", (_T,))
+patch("stripe.api_resources.search_result_object.SearchResultObject", (_T,))
 
 # Generated from `class AsyncBase(Generic[_T]):`
 # @ typeshed/stubs/aiofiles/aiofiles/base.pyi:11
-patch("aiofiles.aiofiles.base.AsyncBase", (_T,))
+patch("aiofiles.base.AsyncBase", (_T,))
 
 # Generated from `class AiofilesContextManager(Generic[_T_co, _T_contra, _V_co]):`
 # @ typeshed/stubs/aiofiles/aiofiles/base.pyi:19
-patch("aiofiles.aiofiles.base.AiofilesContextManager", (_T_co, _T_contra, _V_co))
+patch("aiofiles.base.AiofilesContextManager", (_T_co, _T_contra, _V_co))
 
 # Generated from `class Splitter(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/_regex.pyi:12
-patch("regex.regex._regex.Splitter", (AnyStr,))
+patch("regex._regex.Splitter", (AnyStr,))
 
 # Generated from `class Scanner(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/_regex.pyi:20
-patch("regex.regex._regex.Scanner", (AnyStr,))
+patch("regex._regex.Scanner", (AnyStr,))
 
 # Generated from `class Pattern(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/regex.pyi:323
-patch("regex.regex.regex.Pattern", (AnyStr,))
+patch("regex.regex.Pattern", (AnyStr,))
 
 # Generated from `class Match(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/regex.pyi:574
-patch("regex.regex.regex.Match", (AnyStr,))
+patch("regex.regex.Match", (AnyStr,))
 
 # Generated from `class Scanner(Generic[AnyStr]):`
 # @ typeshed/stubs/regex/regex/_regex_core.pyi:86
-patch("regex.regex._regex_core.Scanner", (AnyStr,))
+patch("regex._regex_core.Scanner", (AnyStr,))
 
 # Generated from `class SassFunction(Generic[_P, _T]):`
 # @ typeshed/stubs/libsass/sass.pyi:30
-patch("libsass.sass.SassFunction", (_P, _T))
+patch("sass.SassFunction", (_P, _T))
 
 # Generated from `class TomlEncoder(Generic[_MappingT]):`
 # @ typeshed/stubs/toml/toml/encoder.pyi:10
-patch("toml.toml.encoder.TomlEncoder", (_MappingT,))
+patch("toml.encoder.TomlEncoder", (_MappingT,))
 
 # Generated from `class TomlDecoder(Generic[_MutableMappingT]):`
 # @ typeshed/stubs/toml/toml/decoder.pyi:49
-patch("toml.toml.decoder.TomlDecoder", (_MutableMappingT,))
+patch("toml.decoder.TomlDecoder", (_MutableMappingT,))
 
 # Generated from `class Connection(Generic[_C]):`
 # @ typeshed/stubs/PyMySQL/pymysql/connections.pyi:58
-patch("PyMySQL.pymysql.connections.Connection", (_C,))
+patch("pymysql.connections.Connection", (_C,))
 
 # Generated from `class UnboundField(Generic[_FieldT]):`
 # @ typeshed/stubs/WTForms/wtforms/fields/core.pyi:101
-patch("WTForms.wtforms.fields.core.UnboundField", (_FieldT,))
+patch("wtforms.fields.core.UnboundField", (_FieldT,))
 
 # Generated from `class FieldList(Field, Generic[_BoundFieldT]):`
 # @ typeshed/stubs/WTForms/wtforms/fields/list.pyi:10
-patch("WTForms.wtforms.fields.list.FieldList", (_BoundFieldT,))
+patch("wtforms.fields.list.FieldList", (_BoundFieldT,))
 
 # Generated from `class FormField(Field, Generic[_BoundFormT]):`
 # @ typeshed/stubs/WTForms/wtforms/fields/form.pyi:10
-patch("WTForms.wtforms.fields.form.FormField", (_BoundFormT,))
+patch("wtforms.fields.form.FormField", (_BoundFormT,))
 
 # Generated from `class RedisCluster(AbstractRedis, AbstractRedisCluster, Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/asyncio/cluster.pyi:23
-patch("redis.redis.asyncio.cluster.RedisCluster", (_StrType,))
+patch("redis.asyncio.cluster.RedisCluster", (_StrType,))
 
 # Generated from `class ClusterPipeline(AbstractRedis, AbstractRedisCluster, Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/asyncio/cluster.pyi:155
-patch("redis.redis.asyncio.cluster.ClusterPipeline", (_StrType,))
+patch("redis.asyncio.cluster.ClusterPipeline", (_StrType,))
 
 # Generated from `class ACLCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:15
-patch("redis.redis.commands.core.ACLCommands", (_StrType,))
+patch("redis.commands.core.ACLCommands", (_StrType,))
 
 # Generated from `class AsyncACLCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:47
-patch("redis.redis.commands.core.AsyncACLCommands", (_StrType,))
+patch("redis.commands.core.AsyncACLCommands", (_StrType,))
 
 # Generated from `class BasicKeyCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:315
-patch("redis.redis.commands.core.BasicKeyCommands", (_StrType,))
+patch("redis.commands.core.BasicKeyCommands", (_StrType,))
 
 # Generated from `class AsyncBasicKeyCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:433
-patch("redis.redis.commands.core.AsyncBasicKeyCommands", (_StrType,))
+patch("redis.commands.core.AsyncBasicKeyCommands", (_StrType,))
 
 # Generated from `class ListCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:551
-patch("redis.redis.commands.core.ListCommands", (_StrType,))
+patch("redis.commands.core.ListCommands", (_StrType,))
 
 # Generated from `class AsyncListCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:621
-patch("redis.redis.commands.core.AsyncListCommands", (_StrType,))
+patch("redis.commands.core.AsyncListCommands", (_StrType,))
 
 # Generated from `class ScanCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:691
-patch("redis.redis.commands.core.ScanCommands", (_StrType,))
+patch("redis.commands.core.ScanCommands", (_StrType,))
 
 # Generated from `class AsyncScanCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:752
-patch("redis.redis.commands.core.AsyncScanCommands", (_StrType,))
+patch("redis.commands.core.AsyncScanCommands", (_StrType,))
 
 # Generated from `class SetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:815
-patch("redis.redis.commands.core.SetCommands", (_StrType,))
+patch("redis.commands.core.SetCommands", (_StrType,))
 
 # Generated from `class AsyncSetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:838
-patch("redis.redis.commands.core.AsyncSetCommands", (_StrType,))
+patch("redis.commands.core.AsyncSetCommands", (_StrType,))
 
 # Generated from `class SortedSetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:993
-patch("redis.redis.commands.core.SortedSetCommands", (_StrType,))
+patch("redis.commands.core.SortedSetCommands", (_StrType,))
 
 # Generated from `class AsyncSortedSetCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1192
-patch("redis.redis.commands.core.AsyncSortedSetCommands", (_StrType,))
+patch("redis.commands.core.AsyncSortedSetCommands", (_StrType,))
 
 # Generated from `class HashCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1407
-patch("redis.redis.commands.core.HashCommands", (_StrType,))
+patch("redis.commands.core.HashCommands", (_StrType,))
 
 # Generated from `class AsyncHashCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1432
-patch("redis.redis.commands.core.AsyncHashCommands", (_StrType,))
+patch("redis.commands.core.AsyncHashCommands", (_StrType,))
 
 # Generated from `class ScriptCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1475
-patch("redis.redis.commands.core.ScriptCommands", (_StrType,))
+patch("redis.commands.core.ScriptCommands", (_StrType,))
 
 # Generated from `class AsyncScriptCommands(Generic[_StrType]):`
 # @ typeshed/stubs/redis/redis/commands/core.pyi:1485
-patch("redis.redis.commands.core.AsyncScriptCommands", (_StrType,))
+patch("redis.commands.core.AsyncScriptCommands", (_StrType,))
 
 # Generated from `class Registry(Generic[_T]):`
 # @ typeshed/stubs/Markdown/markdown/util.pyi:54
-patch("Markdown.markdown.util.Registry", (_T,))
+patch("markdown.util.Registry", (_T,))
 
 # Generated from `class Literal(Composable, Generic[_T]):`
 # @ typeshed/stubs/psycopg2/psycopg2/sql.pyi:38
-patch("psycopg2.psycopg2.sql.Literal", (_T,))
+patch("psycopg2.sql.Literal", (_T,))
 
 # Generated from `class Descriptor(Generic[_T]):`
 # @ typeshed/stubs/openpyxl/openpyxl/descriptors/base.pyi:24
-patch("openpyxl.openpyxl.descriptors.base.Descriptor", (_T,))
+patch("openpyxl.descriptors.base.Descriptor", (_T,))
 
 # Generated from `class Typed(Descriptor[_T], Generic[_T, _N]):`
 # @ typeshed/stubs/openpyxl/openpyxl/descriptors/base.pyi:30
-patch("openpyxl.openpyxl.descriptors.base.Typed", (_T, _N))
+patch("openpyxl.descriptors.base.Typed", (_T, _N))
 
 # Generated from `class MatchPattern(Descriptor[_P], Generic[_P, _N]):`
 # @ typeshed/stubs/openpyxl/openpyxl/descriptors/base.pyi:302
-patch("openpyxl.openpyxl.descriptors.base.MatchPattern", (_P, _N))
+patch("openpyxl.descriptors.base.MatchPattern", (_P, _N))
 
 # Generated from `class CustomPropertyList(Strict, Generic[_T]):`
 # @ typeshed/stubs/openpyxl/openpyxl/packaging/custom.pyi:49
-patch("openpyxl.openpyxl.packaging.custom.CustomPropertyList", (_T,))
+patch("openpyxl.packaging.custom.CustomPropertyList", (_T,))
 
 # Generated from `class DimensionHolder(BoundDictionary[str, _DimT], Generic[_DimT]):`
 # @ typeshed/stubs/openpyxl/openpyxl/worksheet/dimensions.pyi:103
-patch("openpyxl.openpyxl.worksheet.dimensions.DimensionHolder", (_DimT,))
+patch("openpyxl.worksheet.dimensions.DimensionHolder", (_DimT,))
 
 # Generated from `class ArrayDescriptor(Generic[_T]):`
 # @ typeshed/stubs/openpyxl/openpyxl/styles/cell_style.pyi:15
-patch("openpyxl.openpyxl.styles.cell_style.ArrayDescriptor", (_T,))
+patch("openpyxl.styles.cell_style.ArrayDescriptor", (_T,))
 
 # Generated from `class Visitor(ast.NodeVisitor, Generic[TConfig]):`
 # @ typeshed/stubs/flake8-plugin-utils/flake8_plugin_utils/plugin.pyi:19
-patch("flake8-plugin-utils.flake8_plugin_utils.plugin.Visitor", (TConfig,))
+patch("flake8_plugin_utils.plugin.Visitor", (TConfig,))
 
 # Generated from `class Plugin(Generic[TConfig]):`
 # @ typeshed/stubs/flake8-plugin-utils/flake8_plugin_utils/plugin.pyi:29
-patch("flake8-plugin-utils.flake8_plugin_utils.plugin.Plugin", (TConfig,))
+patch("flake8_plugin_utils.plugin.Plugin", (TConfig,))
 
 # Generated from `class CaseInsensitiveDict(MutableMapping[str, _VT], Generic[_VT]):`
 # @ typeshed/stubs/requests/requests/structures.pyi:7
-patch("requests.requests.structures.CaseInsensitiveDict", (_VT,))
+patch("requests.structures.CaseInsensitiveDict", (_VT,))
 
 # Generated from `class Formatter(Generic[_T]):`
 # @ typeshed/stubs/Pygments/pygments/formatter.pyi:5
-patch("Pygments.pygments.formatter.Formatter", (_T,))
+patch("pygments.formatter.Formatter", (_T,))
 
 # Generated from `class TypeSpec(ABC, Generic[_SpecProto]):`
 # @ typeshed/stubs/tensorflow/tensorflow/__init__.pyi:348
-patch("tensorflow.tensorflow.__init__.TypeSpec", (_SpecProto,))
+patch("tensorflow.__init__.TypeSpec", (_SpecProto,))
 
 # Generated from `class Dataset(ABC, Generic[_T1]):`
 # @ typeshed/stubs/tensorflow/tensorflow/data/__init__.pyi:30
-patch("tensorflow.tensorflow.data.__init__.Dataset", (_T1,))
+patch("tensorflow.data.__init__.Dataset", (_T1,))
 
 # Generated from `class Layer(tf.Module, Generic[_InputT, _OutputT]):`
 # @ typeshed/stubs/tensorflow/tensorflow/keras/layers.pyi:41
-patch("tensorflow.tensorflow.keras.layers.Layer", (_InputT, _OutputT))
+patch("tensorflow.keras.layers.Layer", (_InputT, _OutputT))
 
 # Generated from `class Optional(ABC, Generic[_T_co]):`
 # @ typeshed/stubs/tensorflow/tensorflow/experimental/__init__.pyi:7
-patch("tensorflow.tensorflow.experimental.__init__.Optional", (_T_co,))
+patch("tensorflow.experimental.__init__.Optional", (_T_co,))
 
 # Generated from `class NonDataProperty(Generic[_T]):`
 # @ typeshed/stubs/setuptools/setuptools/command/test.pyi:16
-patch("setuptools.setuptools.command.test.NonDataProperty", (_T,))
+patch("setuptools.command.test.NonDataProperty", (_T,))
 
 # Generated from `class ConfigHandler(Generic[Target]):`
 # @ typeshed/stubs/setuptools/setuptools/config/setupcfg.pyi:26
-patch("setuptools.setuptools.config.setupcfg.ConfigHandler", (Target,))
+patch("setuptools.config.setupcfg.ConfigHandler", (Target,))
 
 # Generated from `class FlexibleAlias(Generic[_T, _U]):`
 # @ typeshed/stubs/mypy-extensions/mypy_extensions.pyi:78
-patch("mypy-extensions.mypy_extensions.FlexibleAlias", (_T, _U))
+patch("mypy_extensions.FlexibleAlias", (_T, _U))
 
 # Generated from `class Events(Generic[_T, _AbstractListener_T]):`
 # @ typeshed/stubs/pynput/pynput/_util.pyi:52
-patch("pynput.pynput._util.Events", (_T, _AbstractListener_T))
+patch("pynput._util.Events", (_T, _AbstractListener_T))
 
 # Generated from `class TypeChecker(Generic[_T]):`
 # @ typeshed/stubs/protobuf/google/protobuf/internal/type_checkers.pyi:9
-patch("protobuf.google.protobuf.internal.type_checkers.TypeChecker", (_T,))
+patch("google.protobuf.internal.type_checkers.TypeChecker", (_T,))

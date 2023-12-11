@@ -195,14 +195,13 @@ def find_generic_signatures(module_path: Path, *, root: str = "stdlib") -> None:
 def find_generics(path: Path = Path("."), root: str = "stdlib") -> None:
     if root == "stubs/*":
         root_dir = "stubs"
-        root = "stubs"
     else:
         root_dir = root
     for module_path in (TYPESHED / root_dir / path).glob("**/*" + STUB_SUFFIX):
         if not module_path.is_dir():
             yield from find_generic_signatures(
                 module_path,
-                root=root.replace("*", module_path.parts[0]),
+                root=root.replace("*", module_path.parts[2]),
             )
 
 
