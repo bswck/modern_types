@@ -253,5 +253,5 @@ def register(
             return
         raise
 
-    if isinstance(old_obj, type):
+    if isinstance(old_obj, type) and old_obj not in registry:
         registry[old_obj] = PEP604GenericAlias(old_obj, type_vars)
