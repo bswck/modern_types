@@ -62,10 +62,10 @@ global_registry: dict[object, object] = {}
 
 _PYTHON_VERSION = sys.version_info[:2]
 
-if typing.TYPE_CHECKING or _PYTHON_VERSION >= (3, 10):
+if typing.TYPE_CHECKING or _PYTHON_VERSION >= (3, 10):  # pragma: no cover
     from typing import *  # noqa: F403
 
-elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 8):
+elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 8):  # pragma: no cover
     from functools import partial
     from typing import (
         TypeVar,
@@ -180,7 +180,7 @@ elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 8):
     Type = _pep604(type, CT_co, name="Type")
 
 
-elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 9):
+elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 9):  # pragma: no cover
     from typing import (
         TypeVar,
         _CallableGenericAlias,
