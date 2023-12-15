@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v2.0.4](https://github.com/bswck/modern_types/tree/v2.0.4) (2023-12-15)
+
+
+### Fixed
+
+- Moved flattening activation from tests to the main codebase.
+
+
 ## [v2.0.3](https://github.com/bswck/modern_types/tree/v2.0.3) (2023-12-15)
 
 
