@@ -76,7 +76,7 @@ Simply import `__modern_types__` in your code, and it will make `typing.ForwardR
 type hint expression AST to try to tweak the copy of the passed global/local namespace
 to use `typing._GenericAlias` instances that support `[]` and `|` operators at runtime.
 
-Replacements in the built-in scope:
+Example replacements taking place in the built-in scope:
 
 |             Old type              |           New type           | Without `__modern_types__`, works on Python version... | With `__modern_types__`, works on Python version... |                Backports PEP                 |
 | :-------------------------------: | :--------------------------: | :----------------------------------------------------: | :-------------------------------------------------: | :------------------------------------------: |

@@ -47,7 +47,7 @@ _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
 
 if _PYTHON_VERSION <= (3, 9):
    def test_modern_types() -> None:
-        print(get_type_hints(Foo, globals(), locals())["i"])
+        Optional[Union[str, int]]  # activate _tp_cache
         assert get_type_hints(Foo, globals(), locals()) == {
             "a": Dict[str, int],
             "b": List[int],
@@ -57,7 +57,7 @@ if _PYTHON_VERSION <= (3, 9):
             "f": DefaultDict[str, int],
             "g": Optional[str],
             "h": Union[str, int],
-            "i": Union[str, int, None],
+            "i": Optional[Union[str, int]],
             "j": str,
             "k": Mapping[str, int],
             "l": Optional[Mapping[str, int]],
