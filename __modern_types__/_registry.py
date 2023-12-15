@@ -62,7 +62,7 @@ global_registry: dict[object, object] = {}
 
 _PYTHON_VERSION = sys.version_info[:2]
 
-if typing.TYPE_CHECKING and _PYTHON_VERSION >= (3, 10):
+if typing.TYPE_CHECKING or _PYTHON_VERSION >= (3, 10):
     from typing import *  # noqa: F403
 
 elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 8):
