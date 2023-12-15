@@ -59,10 +59,13 @@ class PEP604GenericAlias(typing._GenericAlias, PEP604, _root=True):  # type: ign
 
 global_registry: dict[object, object] = {}
 
-if typing.TYPE_CHECKING:
+
+_PYTHON_VERSION = sys.version_info[:2]
+
+if typing.TYPE_CHECKING and _PYTHON_VERSION >= (3, 10):
     from typing import *  # noqa: F403
 
-if not typing.TYPE_CHECKING and (_PYTHON_VERSION := sys.version_info[:2]) == (3, 8):
+elif not typing.TYPE_CHECKING and _PYTHON_VERSION == (3, 8):
     from functools import partial
     from typing import (
         TypeVar,
@@ -88,15 +91,49 @@ if not typing.TYPE_CHECKING and (_PYTHON_VERSION := sys.version_info[:2]) == (3,
                 inst=self._inst,
             )
 
+    def _remove_dups_flatten(parameters: typing.Any) -> typing.Any:
+        """Flattern Union among parameters, then remove duplicates."""
+        # Flatten out Union[Union[...], ...].
+        params = []
+        for p in parameters:
+            # We use local Union as a reference.
+            if isinstance(p, typing._GenericAlias) and p.__origin__ is Union:  # noqa: SLF001
+                params.extend(p.__args__)
+            elif isinstance(p, tuple) and len(p) > 0 and p[0] is Union:
+                params.extend(p[1:])
+            else:
+                params.append(p)
+        # Weed out strict duplicates, preserving the first of each occurrence.
+        all_params = set(params)
+        if len(all_params) < len(params):
+            new_params = []
+            for t in params:
+                if t in all_params:
+                    new_params.append(t)
+                    all_params.remove(t)
+            params = new_params
+            # assert not all_params, all_params
+        return tuple(params)
+
     class _PEP604SpecialForm(_SpecialForm, PEP604, _root=True):
         def __getitem__(self, parameters: typing.Any) -> typing.Any:
             if self._name == "Union":
+                if parameters == ():
+                    msg = "Cannot take a Union of no types."
+                    raise TypeError(msg)
+                if not isinstance(parameters, tuple):
+                    parameters = (parameters,)
                 parameters = tuple(
                     parameter.proxied_type
                     if isinstance(parameter, PEP604Proxy)
                     else parameter
                     for parameter in parameters
                 )
+                msg = "Union[arg, ...]: each arg must be a type."
+                parameters = tuple(typing._type_check(p, msg) for p in parameters)  # noqa: SLF001
+                parameters = _remove_dups_flatten(parameters)
+                if len(parameters) == 1:
+                    return parameters[0]
             alias: typing.Any = super().__getitem__(parameters)
             return PEP604GenericAlias(alias.__origin__, alias.__args__)
 
