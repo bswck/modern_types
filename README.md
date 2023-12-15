@@ -21,6 +21,8 @@ As a result, in Python 3.8 and Python 3.9, the following code
 
 ```py
 from __future__ import annotations
+
+import collections.abc
 from collections import defaultdict
 from pprint import pprint
 from typing import get_type_hints
@@ -34,6 +36,14 @@ class Foo:
     d: tuple[int, ...] | None
     e: frozenset[int]
     f: defaultdict[str, int]
+    g: str | None
+    h: str | int
+    i: str | int | None
+    j: str
+    k: collections.abc.Mapping[str, int]
+    l: collections.abc.Mapping[str, int] | None
+    m: collections.abc.Mapping[str, int | None] | float | None
+
 
 pprint(get_type_hints(Foo, globals(), locals()))
 ```
@@ -42,9 +52,16 @@ gives:
 {"a": typing.Dict[str, int],
  "b": typing.List[int],
  "c": typing.Set[int],
- "d": typing.Optional[typing.Tuple[int, ...]],
+ "d": typing.Optional[Tuple[int, ...]],
  "e": typing.FrozenSet[int],
- "f": typing.DefaultDict[str, int]}
+ "f": typing.DefaultDict[str, int],
+ "g": typing.Optional[str],
+ "h": typing.Union[str, int],
+ "i": typing.Optional[typing.Union[str, int]],
+ "j": str,
+ "k": typing.Mapping[str, int],
+ "l": typing.Optional[typing.Mapping[str, int]],
+ "m": typing.Union[typing.Mapping[str, typing.Optional[int]], float, None]}
 ```
 instead of raising an error that `type` object isn't subscriptable (Python 3.8)
 or that `GenericAlias` doesn't support the `|` operator (Python 3.9).
