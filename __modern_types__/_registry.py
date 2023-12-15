@@ -344,6 +344,8 @@ global_registry.update(
     },
 )
 
+typing.Optional[typing.Union[str, int]]  # activate _tp_cache
+
 
 def register(
     ref: str,

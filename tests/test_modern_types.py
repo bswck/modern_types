@@ -43,11 +43,12 @@ class Foo:
     l: collections.abc.Mapping[str, int] | None
     m: collections.abc.Mapping[str, int | None] | float | None
 
+
 _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
+
 
 if _PYTHON_VERSION <= (3, 9):
    def test_modern_types() -> None:
-        Optional[Union[str, int]]  # activate _tp_cache
         assert get_type_hints(Foo, globals(), locals()) == {
             "a": Dict[str, int],
             "b": List[int],
