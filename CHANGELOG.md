@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v2.0.3](https://github.com/bswck/modern_types/tree/v2.0.3) (2023-12-15)
+
+
+### Fixed
+
+- Handling corner cases, such as when an external module is involved in the AST expression or non-generic types need unions.
+
+
 ## [v2.0.2](https://github.com/bswck/modern_types/tree/v2.0.2) (2023-12-12)
 
 
