@@ -1,12 +1,24 @@
 from __future__ import annotations
 
+import collections.abc
 import importlib
 import re
 import sys
 import warnings
 from collections import defaultdict
-from typing import DefaultDict, Dict, FrozenSet, List, Set, Tuple, Union, get_type_hints
-from typing import TypeVar
+from typing import (
+    DefaultDict,
+    Dict,
+    FrozenSet,
+    List,
+    Mapping,
+    Optional,
+    Set,
+    Tuple,
+    TypeVar,
+    Union,
+    get_type_hints,
+)
 
 import pytest
 
@@ -23,7 +35,13 @@ class Foo:
     d: tuple[int, ...] | None
     e: frozenset[int]
     f: defaultdict[str, int]
-
+    g: str | None
+    h: str | int
+    i: str | int | None
+    j: str
+    k: collections.abc.Mapping[str, int]
+    l: collections.abc.Mapping[str, int] | None
+    m: collections.abc.Mapping[str, int | None] | float | None
 
 _PYTHON_VERSION = sys.version_info[:2]  # without PATCH version
 
@@ -33,9 +51,16 @@ if _PYTHON_VERSION <= (3, 9):
             "a": Dict[str, int],
             "b": List[int],
             "c": Set[int],
-            "d": Union[Tuple[int, ...], None],
+            "d": Optional[Tuple[int, ...]],
             "e": FrozenSet[int],
             "f": DefaultDict[str, int],
+            "g": Optional[str],
+            "h": Union[str, int],
+            "i": Optional[Union[str, int]],
+            "j": str,
+            "k": Mapping[str, int],
+            "l": Optional[Mapping[str, int]],
+            "m": Optional[Union[Mapping[str, Optional[int]], float]],
         }
 else:
     # Handling 3.10+ versions is intended to ensure that the library
@@ -43,3 +68,7 @@ else:
     def test_warning() -> None:
         with pytest.warns(DeprecationWarning, match=re.escape(_WARNING_3_10)):
             importlib.reload(__modern_types__)
+
+
+if __name__ == "__main__":
+    print(type(get_type_hints(Foo, globals(), locals())["k"]).mro())
