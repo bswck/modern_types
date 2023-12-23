@@ -7,6 +7,20 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v2.0.7](https://github.com/bswck/modern_types/tree/v2.0.7) (2023-12-23)
+
+
+### Changed
+
+- * Exported `PEP604GenericAliasLink` in `__modern_types__/__init__.py`.
+  * Corrected the README.
+
+### Fixed
+
+- Python version information in the README.
+- `register()` breaking behavior on Python 3.8.
+
+
 ## [v2.0.6](https://github.com/bswck/modern_types/tree/v2.0.6) (2023-12-23)
 
 
