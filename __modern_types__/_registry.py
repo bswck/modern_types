@@ -1,4 +1,4 @@
-"""Extra patching utilities for __modern_types__."""
+"""Replacement registry for the type hint visitor."""
 
 from __future__ import annotations
 
@@ -60,6 +60,7 @@ class PEP604GenericAliasLink(typing._GenericAlias, PEP604Link, _root=True):  # t
 
 
 def create_dest_alias(obj: object) -> Any:
+    """Try to create a runtime-valid alias out of the one from the type hint visitor."""
     factory = getattr(obj, "__create_dest_alias__", None)
     if callable(factory):
         return factory()
