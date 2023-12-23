@@ -200,6 +200,6 @@ def register(
 
     if overwrite or (isinstance(old_obj, type) and old_obj not in global_registry):
         global_registry[old_obj] = PEP604GenericAliasLink(
-            typing._GenericAlias(old_obj, type_vars),  # noqa: SLF001
+            typing._GenericAlias(old_obj, type_vars),  # type: ignore[attr-defined]  # noqa: SLF001
             type_vars,
         )
