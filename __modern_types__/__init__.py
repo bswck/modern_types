@@ -252,7 +252,7 @@ if _PYTHON_VERSION < (3, 10):
 
     typing.ForwardRef._evaluate = typing.cast(typing.Any, _wrap_evaluate)  # type: ignore[attr-defined,method-assign,unused-ignore] #  noqa: SLF001
 
-    from __modern_types__._typeshed import register_typeshed_generics
+    from __modern_types__._registrars import register_typeshed_generics
 
     register_typeshed_generics()
 else:

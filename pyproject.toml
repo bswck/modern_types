@@ -34,7 +34,7 @@ pre-commit = "^3.5.0"
 smokeshow = "^0.4.0"
 
 [tool.poe.tasks]
-generate = "scripts/generate_registrators.py"
+generate = "scripts/generate_registrars.py"
 test = "pytest -v"
 lint = "ruff check ."
 skeleton = "scripts/skeleton.sh"
