@@ -51,19 +51,19 @@ pprint(get_type_hints(Foo, globals(), locals()))
 ```
 gives:
 ```py
-{"a": typing.Dict[str, int],
- "b": typing.List[int],
- "c": typing.Set[int],
- "d": typing.Optional[Tuple[int, ...]],
- "e": typing.FrozenSet[int],
- "f": typing.DefaultDict[str, int],
- "g": typing.Optional[str],
- "h": typing.Union[str, int],
- "i": typing.Optional[typing.Union[str, int]],
- "j": str,
- "k": typing.Mapping[str, int],
- "l": typing.Optional[typing.Mapping[str, int]],
- "m": typing.Union[typing.Mapping[str, typing.Optional[int]], float, None]}
+{'a': typing.Dict[str, int],
+ 'b': typing.List[int],
+ 'c': typing.Set[int],
+ 'd': typing.Union[typing.Tuple[int, ...], NoneType],
+ 'e': typing.FrozenSet[int],
+ 'f': typing.DefaultDict[str, int],
+ 'g': typing.Union[str, NoneType],
+ 'h': typing.Union[str, int],
+ 'i': typing.Union[str, int, NoneType],
+ 'j': <class 'str'>,
+ 'k': typing.Mapping[str, int],
+ 'l': typing.Union[typing.Mapping[str, int], NoneType],
+ 'm': typing.Union[typing.Mapping[str, typing.Union[int, NoneType]], float, NoneType]}
 ```
 instead of raising an error that `type` object isn't subscriptable (Python 3.8)
 or that `GenericAlias` doesn't support the `|` operator (Python 3.9).
