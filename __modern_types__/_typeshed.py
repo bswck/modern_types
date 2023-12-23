@@ -52,6 +52,10 @@ _C = TypeVar("_C", bound=Any)
 # @ typeshed/stdlib/_ctypes.pyi:13
 _CT = TypeVar("_CT", bound=Any)
 
+# Generated from `TypeVar("_D")`
+# @ typeshed/stubs/networkx/networkx/classes/reportviews.pyi:8
+_D = TypeVar("_D")
+
 # Generated from `TypeVar("_DLLT", bound=CDLL)`
 # @ typeshed/stdlib/ctypes/__init__.pyi:40
 _DLLT = TypeVar("_DLLT", bound=Any)
@@ -483,6 +487,24 @@ def register_thirdparty_generics() -> None:  # noqa: PLR0915
     # Generated from `class Scanner(Generic[AnyStr]):`
     # @ typeshed/stubs/regex/regex/_regex_core.pyi:86
     register("regex._regex_core.Scanner", (AnyStr,), noop_ok=True)
+
+    _Node = TypeVar("_Node")  # Supplied. Python 3.12 syntax?
+
+    # Generated from `class DiDegreeView(Generic[_Node]):`
+    # @ typeshed/stubs/networkx/networkx/classes/reportviews.pyi:30
+    register("networkx.classes.reportviews.DiDegreeView", (_Node,), noop_ok=True)
+
+    # Generated from `class OutEdgeDataView(Generic[_Node, _D]):`
+    # @ typeshed/stubs/networkx/networkx/classes/reportviews.pyi:45
+    register("networkx.classes.reportviews.OutEdgeDataView", (_Node, _D), noop_ok=True)
+
+    # Generated from `class OutEdgeView(AbstractSet[Incomplete], Mapping[Incomplete, Incomplete], Generic[_Node]):`
+    # @ typeshed/stubs/networkx/networkx/classes/reportviews.pyi:62
+    register("networkx.classes.reportviews.OutEdgeView", (_Node,), noop_ok=True)
+
+    # Generated from `class Token(NamedTuple, Generic[_T]):`
+    # @ typeshed/stubs/networkx/networkx/readwrite/gml.pyi:22
+    register("networkx.readwrite.gml.Token", (_T,), noop_ok=True)
 
     # Generated from `class SassFunction(Generic[_P, _T]):`
     # @ typeshed/stubs/libsass/sass.pyi:30
