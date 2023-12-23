@@ -1,5 +1,5 @@
 
-# modern_types [![skeleton](https://img.shields.io/badge/019d36a-skeleton?label=%F0%9F%92%80%20bswck/skeleton&labelColor=black&color=grey&link=https%3A//github.com/bswck/skeleton)](https://github.com/bswck/skeleton/tree/019d36a)
+# modern_types [![skeleton](https://img.shields.io/badge/837babb-skeleton?label=%F0%9F%92%80%20bswck/skeleton&labelColor=black&color=grey&link=https%3A//github.com/bswck/skeleton)](https://github.com/bswck/skeleton/tree/837babb)
 [![Package version](https://img.shields.io/pypi/v/modern-types?label=PyPI)](https://pypi.org/project/modern-types/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/modern-types.svg?logo=python&label=Python)](https://pypi.org/project/modern-types/)
 
@@ -131,9 +131,9 @@ poetry add modern-types
 ## For contributors
 
 <!--
-This section was generated from bswck/skeleton@019d36a.
+This section was generated from bswck/skeleton@837babb.
 Instead of changing this particular file, you might want to alter the template:
-https://github.com/bswck/skeleton/tree/019d36a/fragments/readme.md
+https://github.com/bswck/skeleton/tree/837babb/fragments/readme.md
 -->
 
 > [!Note]
