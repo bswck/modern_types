@@ -12,8 +12,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Changed
 
-- * Exported `PEP604GenericAliasLink` in `__modern_types__/__init__.py`.
-  * Corrected the README.
+- Exported `PEP604GenericAliasLink` in `__modern_types__/__init__.py`.
+- Corrected the README.
 
 ### Fixed
 
