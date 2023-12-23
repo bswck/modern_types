@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
-## [v2.0.7](https://github.com/bswck/modern_types/tree/v2.0.7) (2023-12-23)
+## [v2.0.6](https://github.com/bswck/modern_types/tree/v2.0.6) (2023-12-23)
 
 
 ### Changed
