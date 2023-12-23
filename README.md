@@ -71,9 +71,9 @@ or that `GenericAlias` doesn't support the `|` operator (Python 3.9).
 # Use case
 Keep your codebase up-to-date by speeding up migration to modern types, even if you support Python versions >=3.8.
 
-Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet` and `typing.DefaultDict`!
+Stop using deprecated `typing.Dict`, `typing.List`, `typing.Set`, `typing.Tuple`, `typing.FrozenSet`, `typing.DefaultDict` and other `typing` type proxies explicitly!
 
-Importing `__modern_types__` will make all `typing.ForwardRef`-dependent parts of your application, including pydantic models, work with PEP 585 and PEP 604.
+Importing `__modern_types__` will make all `typing.ForwardRef`-dependent parts of your application, including pydantic models, work flawlessly with PEP 585 and PEP 604.
 
 # Is `__modern_types__` safe to use in production?
 Yes. It doesn't break any existing codebase. It only uses AST and overwrites `typing.ForwardRef._evaluate`.
@@ -111,28 +111,6 @@ Additionally, `__modern_types__` also allows you to use `collections.abc` and `c
 > [!Note]
 > Some optional replacements will automatically also be registered if possible,
 > according to those listed in the [`__modern_types__._typeshed`](https://github.com/bswck/modern_types/tree/HEAD/__modern_types__/_typeshed.py) source code.
-
-## ProTip: How to subclass built-in generic classes in Python 3.8?
-Supposing you are subclassing `dict`, you could write
-```py
-from __future__ import annotations
-
-from functools import partial
-from typing import TypeVar
-
-from __modern_types__ import PEP604GenericAlias
-
-KT = TypeVar("KT")
-VT = TypeVar("VT")
-
-
-@partial(PEP604GenericAlias, params=(KT, VT))
-class YourDictSubclass(dict):
-    pass
-```
-so that `YourDictSubclass[str, int]`, for instance, could be used as an evaluable type annotation.
-
-If you need an API that simplifies this, please [submit an issue](https://github.com/bswck/modern_types/issues) so it has a reason to become a feature.
 
 # Installation
 

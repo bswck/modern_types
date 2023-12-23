@@ -17,6 +17,7 @@ from functools import wraps
 from types import SimpleNamespace
 
 from __modern_types__._registry import (
+    PEP604GenericAliasLink,
     PEP604Link,
     PEP604Proxy,
     create_dest_alias,
@@ -25,6 +26,7 @@ from __modern_types__._registry import (
 )
 
 __all__ = (
+    "PEP604GenericAliasLink",
     "TypeHintVisitor",
     "register",
     "registry",
