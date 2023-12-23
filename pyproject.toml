@@ -1,6 +1,6 @@
-# This file was generated from bswck/skeleton@4089ffe.
+# This file was generated from bswck/skeleton@61eeffb.
 # Instead of changing this particular file, you might want to alter the template:
-# https://github.com/bswck/skeleton/tree/4089ffe/project/pyproject.toml.jinja
+# https://github.com/bswck/skeleton/tree/61eeffb/project/pyproject.toml.jinja
 
 [tool.poetry]
 name = "modern_types"
@@ -21,9 +21,9 @@ Coverage = "https://coverage-badge.samuelcolvin.workers.dev/redirect/bswck/moder
 python = ">=3.8,<=3.12"
 
 [tool.poetry.group.dev-skeleton.dependencies]
-# This dependency group was generated from bswck/skeleton@4089ffe.
+# This dependency group was generated from bswck/skeleton@61eeffb.
 # Instead of changing this particular file, you might want to alter the template:
-# https://github.com/bswck/skeleton/tree/4089ffe/project/pyproject.toml.jinja
+# https://github.com/bswck/skeleton/tree/61eeffb/project/pyproject.toml.jinja
 mypy = "^1.7.0"
 ruff = "^0.1.2"
 towncrier = "^23.11.0"
@@ -37,8 +37,7 @@ smokeshow = "^0.4.0"
 generate = "scripts/generate_registrators.py"
 test = "pytest -v"
 lint = "ruff check ."
-reanswer = "scripts/skeleton.sh reanswer"
-bump = "scripts/skeleton.sh bump"
+skeleton = "scripts/skeleton.sh"
 check = [
     { ref="test" },
     { ref="lint" },

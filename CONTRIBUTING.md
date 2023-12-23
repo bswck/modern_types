@@ -1,7 +1,7 @@
 <!--
-This file was generated from bswck/skeleton@4089ffe.
+This file was generated from bswck/skeleton@61eeffb.
 Instead of changing this particular file, you might want to alter the template:
-https://github.com/bswck/skeleton/tree/4089ffe/fragments/contributing.md
+https://github.com/bswck/skeleton/tree/61eeffb/fragments/contributing.md
 -->
 # Contributing to [modern_types](https://github.com/bswck/modern_types) 🎉
 Contributions are very welcome. 🚀
@@ -18,7 +18,7 @@ Anything tagged with "enhancement" is open to whoever wants to implement it.
 
 ## Write documentation 📖
 The project could always use more documentation, whether as part of the official project
-docs. If you're interested in helping out, check the [docs/](https://github.com/bswck/modern_types/tree/HEAD/docs) folder in the repository.
+docs. If you're interested in helping out, check the [README file](https://github.com/bswck/modern_types/tree/HEAD/README.md) in the repository.
 
 ## Share your feedback 🌍
 The best way to send feedback is to file an issue in the [issue tracker](https://github.com/bswck/modern_types).
@@ -45,9 +45,9 @@ Ready to contribute? Here's a quick guide on how to set up modern_types and make
 
 
 <!--
-This section was generated from bswck/skeleton@4089ffe.
+This section was generated from bswck/skeleton@61eeffb.
 Instead of changing this particular file, you might want to alter the template:
-https://github.com/bswck/skeleton/tree/4089ffe/fragments/guide.md
+https://github.com/bswck/skeleton/tree/61eeffb/fragments/guide.md
 -->
 
 > [!Note]
