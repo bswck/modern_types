@@ -488,7 +488,7 @@ def register_thirdparty_generics() -> None:  # noqa: PLR0915
     # @ typeshed/stubs/regex/regex/_regex_core.pyi:86
     register("regex._regex_core.Scanner", (AnyStr,), noop_ok=True)
 
-    _Node = TypeVar("_Node")  # Supplied. Python 3.12 syntax?
+    _Node = TypeVar("_Node")  # Supplied. Why?
 
     # Generated from `class DiDegreeView(Generic[_Node]):`
     # @ typeshed/stubs/networkx/networkx/classes/reportviews.pyi:30
