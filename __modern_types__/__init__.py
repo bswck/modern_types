@@ -17,9 +17,9 @@ from functools import wraps
 from types import SimpleNamespace
 
 from __modern_types__._registry import (
-    PEP604,
-    PEP604GenericAlias,
+    PEP604Link,
     PEP604Proxy,
+    create_dest_alias,
     global_registry,
     register,
 )
@@ -28,7 +28,6 @@ __all__ = (
     "TypeHintVisitor",
     "register",
     "registry",
-    "PEP604GenericAlias",
 )
 
 
@@ -157,7 +156,7 @@ class TypeHintVisitor(ast.NodeTransformer):
         if obj in self.registry:
             obj = self.registry[obj]
 
-        if pep604 and not isinstance(obj, PEP604):
+        if pep604 and not isinstance(obj, PEP604Link):
             obj = PEP604Proxy(
                 obj,
                 path_end,
@@ -240,11 +239,13 @@ if _PYTHON_VERSION < (3, 10):
         self.__forward_code__ = compile(hint, filename="<type hint>", mode="eval")
 
         # Call the original _evaluate
-        return _builtin_evaluate(
-            self,
-            globalns,
-            localns,
-            *() if _PYTHON_VERSION == (3, 8) else (recursive_guard or frozenset(),),
+        return create_dest_alias(
+            _builtin_evaluate(
+                self,
+                globalns,
+                localns,
+                *() if _PYTHON_VERSION == (3, 8) else (recursive_guard or frozenset(),),
+            ),
         )
 
     typing.ForwardRef._evaluate = typing.cast(typing.Any, _wrap_evaluate)  # type: ignore[attr-defined,method-assign,unused-ignore] #  noqa: SLF001
